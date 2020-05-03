@@ -1,24 +1,35 @@
-# README
+# T R E E S
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+ヘアスタイルなどの情報配信。
+コミュニケーションが取れる。
+### サイトテーマ
+美容師の情報発信。
 
-Things you may want to cover:
+### テーマを選んだ理由
+自分が元美容師だったので、美容師にとって役にたつツールを作りたいと思った為。
 
-* Ruby version
+### ターゲットユーザ
+美容師。すべての人。髪の毛で悩んでる人など。
 
-* System dependencies
+### 主な利用シーン
+美容師の情報発信。掲示板などを利用して相談ができる。
 
-* Configuration
 
-* Database creation
 
-* Database initialization
+## 設計書
+デザインシート
+https://drive.google.com/file/d/1_jlvMLjSYqZBu5OEA-3VShFUQEdGvDqr/view?usp=sharing
 
-* How to run the test suite
+ER図
+https://drive.google.com/file/d/1pf8AYatm80f-LFFmp6EItv2i0BfFe00C/view?usp=sharing
 
-* Services (job queues, cache servers, search engines, etc.)
+テーブル設計
+https://docs.google.com/spreadsheets/d/1PPNvsX8mkjDw_icuIsHsDHLpaR4IQDBzh74kAa3xowc/edit?usp=sharing
 
-* Deployment instructions
+ルーティング設計図　or GEM
+https://docs.google.com/spreadsheets/d/1Fk75pSmq93VWG5b7m36XLBLA88GVgMtBcux5CV5dY9Y/edit?usp=sharing
 
-* ...
+### 機能一覧
+https://docs.google.com/spreadsheets/d/1UWyZ-NsPuoSW3AeX_YhjPh92uatm95GNJLO4l3Bv_hE/edit?usp=sharing
+
