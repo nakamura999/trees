@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>rees</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <div id="wrapper">
+      <header id="top">
+        <div class="navbar navbar-fixed-top nav-center">
+          <div class="container">
+            <div class="nav">
+              <img width="250" src="/assets/trees-logo.jpg">
+              <div class="hamburger" id="open_nav">
+                <img src="/assets/hamburger.png" alt ="">
+              </div>
+            </div>
+          </div>
+        </div>
+<!--             <nav>
+              <ul class="nav justify-content-center">
+
+                <li>
+                </li>
+                <li>
+                </li>
+                <li>
+                </li>
+                <li>
+                </li>
+                <li>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div> -->
+      </header>
+
+      <div class="container">
+        <%= yield %>
+      </div>
+
+      <footer>
+        <div class="container">
+          <p class="footer-text">©trees  
+            <a href="#top">
+              <img width="70" src="/assets/top.jpg">
+            </a>
+          </p>
+        </div>
+      </footer>
+    </div>
+      <nav id="naver">
+        <div class="logo">
+          <img width="100" src="/assets/trees-logo.jpg" alt="">
+        </div>
+        <ul>
+          <li>
+            <a href="">login</a>
+          </li>
+          <li>
+            <a href="">sign_in</a>
+          </li>
+          <li>
+            <a href="">ヘアスタイル一覧</a>
+          </li>
+        </ul>
+      </nav>
+
+  </body>
+</html>
