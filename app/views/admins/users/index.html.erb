@@ -1,2 +1,71 @@
-<h1>Admins::Users#index</h1>
-<p>Find me in app/views/admins/users/index.html.erb</p>
+<div class="row main-back">
+  <div class="col-xs-12 text-center bottom-set">
+    <h2><strong>会員一覧</strong></h2><br>
+    <div class="col-xs-2">
+    </div>
+    <div class="col-xs-7">
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>氏名</th>
+            <th>ニックネーム</th>
+            <th>メールアドレス</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @users.each do |j| %>
+          <tr>
+            <td>
+              <%= link_to admins_user_path(j.id) do %>
+                <%= j.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= j.nickname %>
+            </td>
+            <td>
+              <%= j.email %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+    <div class="col-xs-12 text-center bottom-set">
+    <h2><strong>会員退会済一覧</strong></h2><br>
+    <div class="col-xs-2">
+    </div>
+    <div class="col-xs-7">
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>氏名</th>
+            <th>ニックネーム</th>
+            <th>メールアドレス</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @user_deletes.each do |j| %>
+          <tr>
+            <td>
+              <%= link_to admins_user_path(j.id) do %>
+                <%= j.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= j.nickname %>
+            </td>
+            <td>
+              <%= j.email %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -13,14 +13,14 @@ devise_for :users, controllers: {
 
   namespace :admins do
      resources :users, only: [:show, :index]
-     resources :genres, only: [:index, :edit, :create, :update]
+     resources :jenres, only: [:index, :edit, :create, :update]
   end
 
   root 'homes#top'
   get 'homes/top'
 
   get 'users/withdraw/:id' => 'users#withdraw', as: :withdraw
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update, :destroy]
 
   resources :styles, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 

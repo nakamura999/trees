@@ -1,2 +1,43 @@
-<h1>omes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <h1 class="title-text"><string>About</string></h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 box text-center">
+  	<img class="image-box" width="400" src="/assets/about1.jpg">
+  	<img class="image-box" width="400" src="/assets/about2.jpg">
+  </div>
+</div>
+
+<div class="row">
+ <div class="col-xs-12 text-center">
+    <h1 class="title-text"><string>Style</string></h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 box text-center">
+  	<img class="image-box" width="400" src="/assets/mens.jpg">
+  	<img class="image-box" width="400" src="/assets/ladies.jpg">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <h1 class="title-text"><string>User Page</string></h1>
+    <% if user_signed_in? %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "botton-d btn btn-danger" %>
+    <% elsif admin_signed_in? %>
+      <%= link_to 'Admin_Log_out', destroy_admin_session_path, :method => :delete, class: "botton-d btn btn-danger" %>
+    <% else %>
+      <%= link_to 'Log_in', new_user_session_path, class: "botton-d btn btn-danger" %>
+      <%= link_to 'Sing in', new_user_registration_path, class: "botton-d btn btn-danger" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+ <div class="col-xs-12 text-center">
+    <h1 class="title-text"><string>Contact</string></h1>
+  </div>
+</div>

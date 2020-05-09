@@ -1,2 +1,69 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <% if @user == current_user %>
+	    <h2 class="main-tex"><strong>My Page</strong></h2>
+    <% else %>
+      <h2 class="main-tex"><strong>User Page</strong></h2>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-6 text-center">
+    <%= attachment_image_tag @user, :profile_image, :fill, 250, 300, fallback: "no_image.jpg", class: "profile-image" %>
+  </div>
+  <div class="col-xs-6">
+    <label class="col-sm-10 text-user my-top-main"><%= @user.nickname %> | <%=@user.status %></label>
+    <label class="col-sm-10 my-top"><%= @user.body %></label>
+<% if @user == current_user %>
+    <label class="col-sm-10 my-top"><%= @user.name %> | <%= @user.kana_name %></label>
+    <label class="col-sm-10 my-top"><%= @user.prefectures %></label>
+    <label class="col-sm-10 my-top"><%= @user.email %></label>
+<% end %>
+  </div>
+</div>
+<% if @user == current_user %>
+  <div class="row text-center">
+    <%= link_to 'マイページ編集', edit_user_path, class: "botton-date btn btn-danger" %>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <h2 class="main-tex"><strong>Salon</strong></h2>
+  </div>
+</div>
+<div class="row salon-box">
+  <div class="col-xs-12 text-center">
+    <% @user_salons.each do |f| %>
+      <div class="card it" style="width: 28rem;">
+        <%= attachment_image_tag f, :salon_image, :fill, 260, 220, format: 'jpeg', class: "card-img-top ima" %>
+        <div class="card-body">
+          <p class="card-text"><strong>¥<%= f.salon_name %></strong></p>
+          <p class="card-text"><strong>¥<%= f.salon_address %></strong></p>
+          <p class="card-text"><strong>¥<%= f.salon_phone %></strong></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<% if @user == current_user %>
+  <div class="row text-center">
+    <%= link_to 'Salon新規登録', new_salon_path, class: "botton-date btn btn-danger" %>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <h2 class="main-tex"><strong>My HearStyle</strong></h2>
+  </div>
+</div>
+<div class="row salon-box">
+  <div class="col-xs-12 text-center">
+    <% @user_styles.each do |f| %>
+      <div class="card it" style="width: 28rem;">
+        <%= attachment_image_tag f, :image, :fill, 260, 220, format: 'jpeg', class: "card-img-top ima" %>
+      </div>
+    <% end %>
+  </div>
+</div>

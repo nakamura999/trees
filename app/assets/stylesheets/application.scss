@@ -16,6 +16,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// header footer デザイン
 header {
 	width: 100%;
 	height: 100px;
@@ -39,6 +40,13 @@ footer {
     // bottom: 0;
     text-align: center;
 }
+.footer-menu {
+  padding-top: 5px;
+}
+.footer-menu li {
+  display: inline;
+  color: white;
+}
 .footer-text {
 	margin: 20px auto;
 	color: white;
@@ -48,9 +56,8 @@ footer {
 	flex: 0 0 32px;
 	text-align: right;
 	float: right;
+	margin-top: 10px;
 }
-
-/* メニュー */
 #naver {
     padding: 24px 24px 0 24px;
     background: #000;
@@ -81,11 +88,155 @@ footer {
     width: 270px;
     height: 100%;
 }
-/* ドロワーが開かれたときのスタイル */
+// ドロワーが開かれたときのスタイル
 .show {
     transform: translate3d(-270px, 0, 0);
 }
-/* 開く・閉じるアニメーション */
+// 開く・閉じるアニメーション
 #wrapper, #naver {
     transition: transform 0.3s;
+}
+// アニメージョン hover時(ハンガー)
+.effect-float a {
+  display: block;
+  height: 30px;
+  box-shadow: 0 2px 4px rgba(3,3,3,.09);
+  border-radius: 3px;
+}
+.effect-float a:hover {
+  display: block;
+  height: 30px;
+  box-shadow: 0 8px 12px rgba(0,0,0,.12);
+  border-radius: 3px;
+  margin-top:-5px;
+}
+.link-text {
+  color: white;
+}
+
+.main-image {
+  background: url("mains-image1.jpg") center;
+  background-size: cover;
+  max-width: 100%;
+  height: 700px;
+  border: 1px solid;
+}
+
+// スライド
+#container{
+  height: 700px;
+}
+.image1 {
+background-image: url(mains-image1.jpg);
+}
+.image2 {
+background-image: url(mains-image2.jpg);
+}
+.image3 {
+background-image: url(mains-image3.jpg);
+}
+.image4 {
+background-image: url(mains-image4.jpg);
+}
+
+.title-text {
+  padding: 80px 0px 20px 0;
+  border-bottom: 3px solid #969696;
+}
+.image-box {
+  margin: 30px;
+  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
+}
+
+.bottom-set {
+  margin: 100px 0;
+}
+.botton-b {
+  margin-top: 30px;
+}
+.main-back {
+  background-color: #969696;
+  color: white;
+}
+.top-b {
+  margin-top: 30px;
+}
+.text-pas {
+  color: black;
+}
+.botton-d {
+  margin-top: 30px;
+  width: 60%;
+}
+.flash {
+  width: 100%;
+  text-align: center;
+}
+
+// アニメーション
+.slide-left {
+  animation-name: RightToLeft;/* アニメーション名 */
+  animation-duration: 2s;/* アニメーション時間 */
+}
+/*右から左*/
+@keyframes RightToLeft {
+0% {
+    opacity: 0;/* 透明 */
+    transform: translateX(50px);/* X軸方向に50px */
+}
+100% {
+    opacity: 1;/* 不透明 */
+    transform: translateX(0);/* X軸方向に0px */
+}
+}
+
+.box img {
+  text-align: center;
+  -webkit-transition: all 1s;
+  -webkit-transform: scale(1.0);
+  opacity: 1;
+}
+.box img.move {
+  -webkit-transform: translate(0, 0)  scale(0.5);
+  opacity: 0;
+}
+
+
+// マイページ
+.text-user {
+  font-size: 18px;
+}
+.main-tex {
+  margin: 80px;
+  border-bottom: 2px solid #969696;
+}
+.profile-image {
+  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
+}
+.botton-date {
+  margin-top: 30px;
+  width: 40%;
+}
+.salon-box {
+  height: 400px;
+  background-color: #969696;
+}
+.image-tag {
+  margin: 20px auto;
+  width: 55%;
+}
+.my-edit {
+  width: 100%;
+}
+.my-top {
+  margin-top: 15px;
+}
+.my-top-main {
+  border-bottom: 2px solid #969696;
+  margin-bottom: 30px;
+}
+.pre {
+  width: 250px;
+  height: 300px;
+  background-size: cover;
 }

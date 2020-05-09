@@ -72,3 +72,5 @@ gem "refile-mini_magick"
 gem "pry-rails"
 
 gem 'acts-as-taggable-on', '~> 6.0'
+
+gem 'paranoia'

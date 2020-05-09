@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+  acts_as_paranoid
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -21,4 +24,7 @@ class User < ApplicationRecord
   validates :prefectures, presence: true
   validates :body, length: {maximum: 100}
   # プロフィール文50文字いない
+
+  enum status: { 一般: 0, 美容師: 1 }
+
 end

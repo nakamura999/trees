@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Trees</title>
+    <title>Admin-Trees</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -68,22 +68,25 @@
           <img width="100" src="/assets/trees-logo.jpg" alt="">
         </div>
         <ul>
-          <% if user_signed_in? %>
+          <% if admin_signed_in? %>
             <li>
-              <%= link_to 'My Page', user_path(current_user), class: "link-text" %>
+              <%= link_to 'ジャンル', admins_jenres_path, class: "link-text" %>
             </li>
             <li>
-              <%= link_to 'Style List', styles_path, class: "link-text" %>
+              <%= link_to '会員一覧', admins_users_path, class: "link-text" %>
             </li>
             <li>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link-text" %>
+              <%= link_to 'スタイル一覧', styles_path, class: "link-text" %>
+            </li>
+            <li>
+              <%= link_to 'Log_out', destroy_admin_session_path, :method => :delete, class: "link-text" %>
             </li>
           <% else %>
             <li>
-              <%= link_to 'Log in', new_user_session_path, class: "link-text" %>
+              <%= link_to 'User_Log in', new_user_session_path, class: "link-text" %>
             </li>
             <li>
-              <%= link_to 'Sing in', new_user_registration_path, class: "link-text" %>
+              <%= link_to 'User_Sing in', new_user_registration_path, class: "link-text" %>
             </li>
             <li>
               <%= link_to 'Style List', styles_path, class: "link-text" %>

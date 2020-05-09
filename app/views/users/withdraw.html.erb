@@ -1,2 +1,11 @@
-<h1>Users#withdraw</h1>
-<p>Find me in app/views/users/withdraw.html.erb</p>
+<div class="row main-back">
+  <div class="col-xs-12 text-center bottom-set">
+<h1>本当に退会しますか？</h1>
+<p>退会すると、会員登録情報や<br>これまでの機能がご利用できなくなります。<br>退会する場合は、「退会する」をクリックしてください。</p>
+
+<div class="actions">
+	<%= link_to "退会する", user_path, method: :delete, class: "btn btn-sm btn-primary" %>
+    <%= link_to "退会しない", edit_user_path, class: "btn btn-sm btn-danger" %>
+</div>
+</div>
+</div>
