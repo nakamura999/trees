@@ -200,6 +200,22 @@ background-image: url(mains-image4.jpg);
   -webkit-transform: translate(0, 0)  scale(0.5);
   opacity: 0;
 }
+// 画像拡大
+.effect-scale {
+ overflow: hidden;
+ width: 300px;
+ height: 200px;
+}
+.effect-scale img {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+.effect-scale img:hover {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
 
 
 // マイページ
@@ -210,6 +226,11 @@ background-image: url(mains-image4.jpg);
   margin: 80px;
   border-bottom: 2px solid #969696;
 }
+.main-tex2 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #969696;
+}
 .profile-image {
   box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
 }
@@ -217,9 +238,16 @@ background-image: url(mains-image4.jpg);
   margin-top: 30px;
   width: 40%;
 }
+.botton-salon {
+  margin-top: 10px;
+}
 .salon-box {
-  height: 400px;
-  background-color: #969696;
+  height: 300px;
+  background-color: #222222;
+  overflow: scroll;
+  margin: 0 auto;
+  color: white;
+  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
 }
 .image-tag {
   margin: 20px auto;
@@ -238,5 +266,19 @@ background-image: url(mains-image4.jpg);
 .pre {
   width: 250px;
   height: 300px;
+  background-size: cover;
+}
+.pres {
+  width: 300px;
+  height: 250px;
+  background-size:  cover;
+}
+.dis {
+  display: flex;
+  margin: 0 auto;
+}
+
+.btn-danger {
+  background: url("button.jpg");
   background-size: cover;
 }

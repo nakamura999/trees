@@ -1,6 +1,8 @@
 <div class="row">
   <div class="col-xs-12 text-center">
-    <% if @user == current_user %>
+    <% if @user.status == "美容師" %>
+      <h2 class="main-tex"><strong>Stylist Page</strong></h2>
+    <% elsif @user == current_user %>
 	    <h2 class="main-tex"><strong>My Page</strong></h2>
     <% else %>
       <h2 class="main-tex"><strong>User Page</strong></h2>
@@ -28,20 +30,27 @@
   </div>
 <% end %>
 
+<div class="col-xs-12">
 <div class="row">
   <div class="col-xs-12 text-center">
-    <h2 class="main-tex"><strong>Salon</strong></h2>
+    <h2 class="main-tex2"><strong>Salon</strong></h2>
   </div>
 </div>
 <div class="row salon-box">
-  <div class="col-xs-12 text-center">
+  <div class="col-xs-12 text-center dis">
     <% @user_salons.each do |f| %>
-      <div class="card it" style="width: 28rem;">
-        <%= attachment_image_tag f, :salon_image, :fill, 260, 220, format: 'jpeg', class: "card-img-top ima" %>
+      <div class="card it" style="width: 30rem;">
+        <figure class="effect-scale">
+         <%= attachment_image_tag f, :salon_image, :fill, 260, 220, format: 'jpeg', class: "card-img-top ima" %>
+        </figure>
         <div class="card-body">
-          <p class="card-text"><strong>¥<%= f.salon_name %></strong></p>
-          <p class="card-text"><strong>¥<%= f.salon_address %></strong></p>
-          <p class="card-text"><strong>¥<%= f.salon_phone %></strong></p>
+          <p class="card-text"><strong><%= f.salon_name %></strong></p>
+          <p class="card-text"><strong><%= f.salon_address %></strong></p>
+          <p class="card-text"><strong><%= f.salon_phone %></strong></p>
+          <% if @user == current_user %>
+            <%= link_to 'Salon編集', edit_salon_path(f.id), class: "botton-salon btn-sm btn-danger" %>
+            <%= link_to "Salon削除",salon_path(f.id), class: "botton-salon btn-sm btn-danger", method: :delete,"data-confirm" => "本当に削除しますか?" %>
+          <% end %>
         </div>
       </div>
     <% end %>
@@ -52,6 +61,7 @@
     <%= link_to 'Salon新規登録', new_salon_path, class: "botton-date btn btn-danger" %>
   </div>
 <% end %>
+</div>
 
 <div class="row">
   <div class="col-xs-12 text-center">
