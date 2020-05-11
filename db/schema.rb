@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_10_054552) do
+ActiveRecord::Schema.define(version: 2020_05_11_103657) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 2020_05_10_054552) do
     t.string "name"
     t.text "content"
     t.integer "price"
-    t.string "image_id"
     t.integer "jenre_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -97,6 +96,9 @@ ActiveRecord::Schema.define(version: 2020_05_10_054552) do
     t.integer "status"
     t.string "menu"
     t.string "color_style"
+    t.string "image_id"
+    t.string "image_second_id"
+    t.string "image_third_id"
   end
 
   create_table "taggings", force: :cascade do |t|

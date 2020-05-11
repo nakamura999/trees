@@ -76,6 +76,9 @@
               <%= link_to 'Style List', styles_path, class: "link-text" %>
             </li>
             <li>
+              <%= link_to 'Style 新規作成', new_style_path, class: "link-text" %>
+            </li>
+            <li>
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link-text" %>
             </li>
           <% else %>

@@ -40,6 +40,37 @@ document.addEventListener("turbolinks:load", function() {
         readURL(this);
     });
   });
+// 画像プレビュー2
+  $(function() {
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+    $('#img_two').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#style_two").change(function(){
+        readURL(this);
+    });
+  });
+// 画像プレビュー3
+  $(function() {
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+    $('#img_three').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#style_three").change(function(){
+        readURL(this);
+    });
+  });
+
 
 $(function(){
   $('.box img').addClass('move');
