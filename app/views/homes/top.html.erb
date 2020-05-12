@@ -17,8 +17,12 @@
 </div>
 <div class="row">
   <div class="col-xs-12 box text-center">
-  	<img class="image-box" width="400" src="/assets/mens.jpg">
-  	<img class="image-box" width="400" src="/assets/ladies.jpg">
+    <%= link_to styles_path(status: "MENS") do %>
+  	  <img class="image-box" width="400" src="/assets/mens.jpg">
+    <% end %>
+    <%= link_to styles_path(status: "LADIES") do %>
+  	  <img class="image-box" width="400" src="/assets/ladies.jpg">
+    <% end %>
   </div>
 </div>
 

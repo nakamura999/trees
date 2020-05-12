@@ -71,6 +71,29 @@ document.addEventListener("turbolinks:load", function() {
     });
   });
 
+  // const thumbs = document.querySelectorAll('.thumb');
+  // thumbs.forEach(function(item, index) {
+  //   item.onclick = function() {
+  //     document.getElementById('bigimg').src = this.dataset.image;
+  //   }
+  // });
+
+  $(function() {
+  $('.imageList__thumbnail').on('click',function() {
+
+    if ( $(this).hasClass("selected") ) {
+        return;
+    }
+
+    var selectedImgSrc = $(this).children('img').attr('src');
+
+    $('.selected').removeClass('selected');
+    $(this).addClass('selected');
+
+    $('.imageList__view').children('img').attr('src', selectedImgSrc);
+  });
+})
+
 
 $(function(){
   $('.box img').addClass('move');

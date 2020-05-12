@@ -1,14 +1,24 @@
 class StylesController < ApplicationController
   def index
+    @jenres = Jenre.all
+    @tags = ActsAsTaggableOn::Tag.all
     if params[:tag]
       @styles = Style.tagged_with(params[:tag])
+    elsif params[:status] == "MENS"
+      @styles = Style.where(status: "MENS").order("RANDOM()").all
+    elsif params[:status] == "LADIES"
+      @styles = Style.where(status: "LADIES").order("RANDOM()").all
+    elsif params[:jenre_id]
+      @jenre = Jenre.find(params[:jenre_id])
+      @styles = @jenre.styles.order("RANDOM()").all
     else
-      @styles = Style.all
+      @styles = Style.order("RANDOM()").all
     end
   end
 
   def show
     @style = Style.find(params[:id])
+    @user_styles = @style.user.styles
   end
 
   def new
