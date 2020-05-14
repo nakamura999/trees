@@ -1,0 +1,23 @@
+<% board_comments.each do |board_comment| %>
+  <table class="col-xs-12 board-table">
+    <tbody>
+      <tr>
+        <td class="col-xs-2">
+        </td>
+        <td class="col-xs-2 text-center">
+          <!-- プロフィール画像 -->
+          <%= attachment_image_tag board_comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %>
+          <br>
+          <%= board_comment.user.nickname %><br>
+          <% if board_comment.user == current_user %>
+          <%= link_to "Destroy", board_board_comments_path(board_comment.id), class: "btn-sm btn-danger", method: :delete, remote: true %>
+          <% end %>
+        </td>
+        <td class="col-xs-9">
+          <%= board_comment.comment %>
+          <!-- コメント -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

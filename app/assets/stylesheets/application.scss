@@ -508,5 +508,53 @@ background-image: image-url("mains-image4.jpg");
   margin-bottom: 10px;
 }
 
-
+// 掲示板
+.profile-image-board {
+  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
+  width: 80px;
+  height: 80px;
+  border-radius: 35px;
+}
+.board-title {
+  font-size: 20px;
+  border-bottom: 2px solid #969696;
+} 
+.bord-con {
+  border-bottom: 2px solid #969696;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+.board-main {
+  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
+  padding: 20px;
+  margin-bottom: 50px;
+  border-radius: 35px;
+}
+.bottom-pa {
+  padding-top: 10px;
+}
+.board-table {
+  margin-bottom: 20px;
+  border-bottom: 3px solid blue;
+}
+.my-styles-board {
+  width: 100%;
+  overflow: auto;
+  height: 1000px;
+  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
+  margin-bottom: 50px;
+}
+.comment-count {
+  margin-top: 10px;
+  font-size: 10px;
+  color: white;
+  background-color: black;
+  border-radius: 20px;
+}
+.comment-t {
+  background-color: black;
+  color: white;
+  margin-bottom: 30px;
+  border-radius: 20px;
+}
 

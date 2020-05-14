@@ -47,7 +47,7 @@ class StylesController < ApplicationController
   def destroy
       @style = Style.find(params[:id])
       @style.destroy
-      redirect_tob styles_path
+      redirect_to user_path(current_user.id)
   end
 
   private

@@ -22,17 +22,15 @@ devise_for :users, controllers: {
   get 'users/withdraw/:id' => 'users#withdraw', as: :withdraw
   resources :users, only: [:show, :edit, :update, :destroy]
 
-  resources :styles, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+  resources :styles, only: [:index, :show, :new, :edit, :create, :update, :destroy] do
+    resource :favorites, only: [:create, :destroy]
+  end
 
-  resources :boards, only: [:show, :index, :create]
-
-  resources :board_comments, only: [:create, :destroy]
-
-  resources :favorites, only: [:create, :destroy]
+  resources :boards, only: [:show, :index, :create, :destroy] do
+    resource :board_comments, only: [:create, :destroy]
+  end
 
   resources :rooms, only: [:create, :show]
-
-  resources :board_comments, only: [:create]
 
   resources :salons, only: [:create, :destroy, :new, :edit, :update]
 

@@ -32,6 +32,7 @@
     <label class="col-sm-10 text-user my-style-main"><%= @style.name %>
       <% if @style.user == current_user %>
        <%= link_to '編集する', edit_style_path(@style.id), class: "btn-sm btn-danger image-tag" %>
+       <%= link_to '削除する', style_path(@style.id), class: "btn-sm btn-danger image-tag", method: :delete,"data-confirm" => "本当に削除しますか?" %>
       <% end %>
     </label>
 

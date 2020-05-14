@@ -17,8 +17,8 @@
             <h4><strong>ジャンル検索</strong></h4>
           </div>
           <div class="panel-body">
-            <% @jenres.each do |j| %>
-              <strong><%= link_to j.name, styles_path(jenre_id: j.id) %></strong>
+            <% @jenres.each do |jenre| %>
+              <strong><%= link_to jenre.name, styles_path(jenre_id: jenre.id) %></strong><br>
             <% end %>
           </div>
         </div>
