@@ -36,6 +36,13 @@
       <% end %>
     </label>
 
+    <label class="col-sm-10 text-user my-style-main text-right">
+      <!-- いいね機能【非同期】 -->
+      <div id="favorites_<%= @style.id %>">
+        <%= render 'favorites/favorites', style: @style %>
+      </div>
+    </label>
+
     <label class="col-sm-10 my-top text-styles"><%= @style.content %></label>
 
     <label class="col-sm-10 my-top"><%= @style.status %> | <%= @style.jenre.name %> | <%= @style.color_style %></label>

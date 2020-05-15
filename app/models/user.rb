@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :boards, dependent: :destroy
   has_many :boards_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorites_styles, through: :favorites, source: :style
   has_many :chats, dependent: :destroy
   has_many :user_rooms, dependent: :destroy
 

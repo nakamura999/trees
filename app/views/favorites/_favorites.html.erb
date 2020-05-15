@@ -1,0 +1,14 @@
+<!-- いいね機能 -->
+<% if style.favorited_by?(current_user) %>
+  <%= link_to style_favorites_path(style.id), method: :delete, remote: true do %>
+    <span class="glyphicon glyphicon-heart" style="color: red;">
+      <%= style.favorites.count %>
+    </span>
+  <% end %>
+<% else %>
+  <%= link_to style_favorites_path(style.id), method: :post, remote: true do %>
+    <span class="glyphicon glyphicon-heart-empty">
+      <%= style.favorites.count %>
+    </span>
+  <% end %>
+<% end %>

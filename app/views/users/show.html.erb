@@ -11,6 +11,7 @@
   </div>
 </div>
 
+<!-- my情報 -->
 <div class="row">
   <div class="col-xs-6 text-center">
     <%= attachment_image_tag @user, :profile_image, :fill, 250, 300, fallback: "no_image.jpg", class: "profile-image" %>
@@ -31,6 +32,7 @@
   </div>
 <% end %>
 
+<!-- サロン情報 -->
 <div class="col-xs-12">
 <div class="row">
   <div class="col-xs-12 text-center">
@@ -64,6 +66,7 @@
 <% end %>
 </div>
 
+<!-- myスタイル一覧 -->
 <div class="col-xs-12">
 <div class="row">
   <div class="col-xs-12 text-center">
@@ -91,3 +94,27 @@
     <% end %>
   </div>
 </div>
+
+<% if @user == current_user %>
+<!-- myいいね一覧 -->
+<div class="col-xs-12">
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <h2 class="main-tex"><strong>お気に入り Styles</strong></h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="my-styles">
+      <div class="col-xs-12">
+        <% current_user.favorites_styles.each do |favorites| %>
+          <div class="box box-efect">
+            <%= link_to style_path(favorites.id) do %>
+              <%= attachment_image_tag favorites, :image, :fill, 200, 250, format: 'jpeg', class: "style-image" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
