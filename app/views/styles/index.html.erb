@@ -14,11 +14,11 @@
       <div class="col-xs-12 text-center">
         <div class="panel panel-color">
           <div class="panel-im">
-            <h4><strong>ジャンル検索</strong></h4>
+            <h4><strong>Jenres</strong></h4>
           </div>
           <div class="panel-body">
             <% @jenres.each do |jenre| %>
-              <strong><%= link_to jenre.name, styles_path(jenre_id: jenre.id) %></strong><br>
+              <strong><%= link_to jenre.name, styles_path(jenre_id: jenre.id), class: "jenre-text" %></strong><br>
             <% end %>
           </div>
         </div>
@@ -34,7 +34,7 @@
   <!-- スタイル一覧 -->
   <div class="col-xs-10">
     <div class="col-xs-12 text-center">
-      <h2 class="main-tex2"><strong>Styles</strong></h2>
+      <h2 class="main-tex2"><strong>S t y l e s</strong></h2>
     </div>
     <div class="row">
       <div class="my-styles2">

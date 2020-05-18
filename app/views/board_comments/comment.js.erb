@@ -1,2 +1,6 @@
+document.addEventListener("turbolinks:load", function() {
+
 $("#comments_area"),html("<%= j(render 'comment', { board_comment: @board.board_comments}) %>");
 $("textarea").val('')
+
+})

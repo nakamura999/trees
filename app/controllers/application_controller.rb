@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   	  when Admin
   	     admins_jenres_path
       when User
-         root_path
+         styles_path
     end
   end
 

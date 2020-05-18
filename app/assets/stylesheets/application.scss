@@ -16,11 +16,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+body {
+  background-color: #e3e3e3;
+}
 // header footer デザイン
 header {
 	width: 100%;
 	height: 100px;
 	border-bottom: 1px solid;
+  background-color: #252525;
 }
 .nav {
 	margin-top: 20px;
@@ -35,7 +40,7 @@ footer {
     color: white;
     width: 100%;
     display: block;
-    background-color: black;
+    background-color: #252525;
     position: absolute;
     // bottom: 0;
     text-align: center;
@@ -45,7 +50,7 @@ footer {
 }
 .footer-menu li {
   display: inline;
-  color: white;
+  color: #e3e3e3;
 }
 .footer-text {
 	margin: 20px auto;
@@ -61,7 +66,7 @@ footer {
 }
 #naver {
     padding: 24px 24px 0 24px;
-    background: #000;
+    background: #252525;
     color: white;
 }
 #naver ul {
@@ -112,7 +117,7 @@ footer {
   margin-top:-5px;
 }
 .link-text {
-  color: white;
+  color: #e3e3e3;
 }
 
 // .main-image {
@@ -130,7 +135,7 @@ footer {
   height: 50px;
 }
 .toriger {
-  background-image: image-url("hamburger.png");
+  background-image: image-url("hamburgers.png");
   background-size: cover;
   width: 50px;
   height: 50px;
@@ -209,7 +214,7 @@ background-image: image-url("mains-image4.jpg");
 }
 .main-back {
   background-color: #969696;
-  color: white;
+  color: #e3e3e3;
 }
 .top-b {
   margin-top: 30px;
@@ -326,12 +331,12 @@ background-image: image-url("mains-image4.jpg");
   border-bottom: 2px solid #969696;
 }
 .main-tex2 {
-  margin-top: 30px;
+  margin-top: 50px;
   margin-bottom: 20px;
   border-bottom: 2px solid #969696;
   background: image-url("button.jpg");
   background-size: cover;
-  color: white;
+  color: #e3e3e3;
 
 }
 .profile-image {
@@ -349,7 +354,7 @@ background-image: image-url("mains-image4.jpg");
   background-color: #222222;
   overflow: scroll;
   margin: 0 auto;
-  color: white;
+  color: #e3e3e3;
   box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
 }
 .syadow {
@@ -368,6 +373,16 @@ background-image: image-url("mains-image4.jpg");
 .my-top-main {
   border-bottom: 2px solid #969696;
   margin-bottom: 30px;
+}
+.my-top-main-follow {
+  border-bottom: 2px solid #969696;
+  margin-bottom: 30px;
+  background-color: #222222;
+  border-radius: 20px;
+  color: #e3e3e3;
+}
+.follow-color {
+  color: #e3e3e3;
 }
 .pre {
   width: 250px;
@@ -393,7 +408,7 @@ background-image: image-url("mains-image4.jpg");
   margin-top: 15px;
   background: image-url("button.jpg");
   background-size: cover;
-  color: white;
+  color: #e3e3e3;
 }
 .text-styles {
   font-size: 13px;
@@ -401,7 +416,7 @@ background-image: image-url("mains-image4.jpg");
   padding: 10px;
   background: image-url("body.jpg");
   background-size: cover;
-  color: white;
+  color: #e3e3e3;
   border-radius: 20px;
 }
 .text-style-mini {
@@ -420,7 +435,7 @@ background-image: image-url("mains-image4.jpg");
 .style-main {
   background: image-url("button.jpg");
   background-size: cover;
-  color: white;
+  color: #e3e3e3;
 }
 .style-image {
   float: left;
@@ -473,15 +488,21 @@ background-image: image-url("mains-image4.jpg");
 
 // ジャンル
 .panel-im {
-  color: white;
+  color: #e3e3e3;
   background: image-url("button.jpg");
   padding: 2px 0;
   border-bottom: 1px solid transparent;
   text-align: center;
   font-size: 12px;
 }
+.jenre-text {
+  color: #e3e3e3;
+}
+.panel-body {
+  background-color: #252525;
+}
 .panel-color {
-  border-color: #330000;
+  border-color: #e3e3e3;
   border-width: thin;
   font-size: 12px;
 }
@@ -500,8 +521,9 @@ background-image: image-url("mains-image4.jpg");
   height: 100px;
 }
 .index-status {
-  background-color: black;
+  background-color: #252525;
   height: 100%;
+  padding-bottom: 500px; 
 }
 .index-top {
   margin-top: 30px;
@@ -558,3 +580,69 @@ background-image: image-url("mains-image4.jpg");
   border-radius: 20px;
 }
 
+.follow-no-image {
+  width: 70px;
+  height: 70px;
+}
+
+.chat {
+  background-color: #969696;
+}
+.chattop {
+  background-color: #252525;
+  background-size: cover;
+  color: white;
+  border-radius: 20px;
+  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
+}
+.chatbox {
+  overflow: auto;
+  height: 1000px;
+  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
+  margin: 30px auto;
+  border-radius: 20px;
+  padding: 30px;
+  background-color: #969696;
+  border: 2px solid black;
+}
+.content {
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
+  margin: 40px auto;
+  padding: 10px;
+}
+.chat-taxt {
+  margin-top: 5px;
+  background-color: #252525;
+  width: 25%;
+  float: right;
+  border-radius: 20px;
+  padding: 5px;
+  color: white;
+}
+.chat-field {
+  margin-top: 50px;
+  width: 100%;
+  height: 100px;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+.room-users {
+  background-color: white;
+  border-radius: 20px;
+  width: 200px;
+  margin: 10px auto;
+}
+.room-users-text {
+  color: #252525;
+}
+.rooms-user {
+  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
+  border-radius: 20px;
+  height: 200px;
+  overflow: auto;
+  margin-top: 10px;
+  background: image-url("body.jpg");
+  background-size: cover;
+}

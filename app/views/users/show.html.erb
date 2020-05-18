@@ -14,16 +14,92 @@
 <!-- my情報 -->
 <div class="row">
   <div class="col-xs-6 text-center">
-    <%= attachment_image_tag @user, :profile_image, :fill, 250, 300, fallback: "no_image.jpg", class: "profile-image" %>
+    <%= attachment_image_tag @user, :profile_image, :fill, 300, 360, fallback: "no_image.jpg", class: "profile-image" %>
+    <div class="col-xs-12 text-center botton-b">
+      <%= render 'relationships/follow', user: @user %>
+    </div>
+    <div class="col-xs-12">
+      <div class="col-xs-2">
+      </div>
+      <div class="col-sm-8 text-user my-top-main-follow text-center">
+      フォロー中 : <%= link_to @user.follower.count, user_follows_path(@user.id), class: "follow-color" %> | フォロワー : <%= link_to @user.followed.count, user_followers_path(@user.id), class: "follow-color" %>    
+      </div>
+    </div>
+    <div class="col-xs-12 text-center index-top">
+      <% unless @user == current_user %>
+        <div class="row">
+          <% if @isroom == true %>
+            <%= link_to "チャットへ", room_path(@roomid), class: "btn btn-warning chat" %>
+          <% else %>
+            <%= form_for @room do |room| %>
+              <%= fields_for @entry do |e| %>
+                <%= e.hidden_field :user_id, :value=> @user.id %>
+              <% end %>
+                <%= room.submit "チャットを始める", class: "btn btn-warning chat" %>
+            <% end %>
+         <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-xs-12 text-center">
+      <div class="col-xs-2">
+      </div>
+        <div class="col-xs-8 rooms-user">
+          <% @rooms.each do |room| %>
+            <div class="room-users text-center">
+              <%= link_to room_path(room.id), class: "room-users-text" do %>
+                <%= room.id %>
+                チャット件数 : <%= room.chats.count %> 件<br>
+                <% room.user_rooms.each do |user| %>
+                  <%= user.user.nickname %>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+    </div>
   </div>
   <div class="col-xs-6">
     <label class="col-sm-10 text-user my-top-main"><%= @user.nickname %> | <%=@user.status %></label>
     <label class="col-sm-10 my-top"><%= @user.body %></label>
-<% if @user == current_user %>
-    <label class="col-sm-10 my-top"><%= @user.name %> | <%= @user.kana_name %></label>
-    <label class="col-sm-10 my-top"><%= @user.prefectures %></label>
-    <label class="col-sm-10 my-top"><%= @user.email %></label>
-<% end %>
+    <% if @user == current_user %>
+      <label class="col-sm-10 my-top"><%= @user.name %> | <%= @user.kana_name %></label>
+      <label class="col-sm-10 my-top"><%= @user.prefectures %></label>
+      <label class="col-sm-10 my-top"><%= @user.email %></label>
+    <% end %>
+    <!-- サロン情報 -->
+    <div class="col-xs-10">
+      <div class="row">
+        <div class="col-xs-12 text-center">
+          <h2 class="main-tex2"><strong>Salon</strong></h2>
+        </div>
+      </div>
+      <div class="row salon-box">
+        <div class="col-xs-10 text-center dis">
+          <% @user_salons.each do |f| %>
+            <div class="card it" style="width: 30rem;">
+              <figure class="effect-scale">
+                <%= attachment_image_tag f, :salon_image, :fill, 260, 220, format: 'jpeg', class: "card-img-top ima" %>
+              </figure>
+              <div class="card-body">
+                <p class="card-text"><strong><%= f.salon_name %></strong></p>
+                <p class="card-text"><strong><%= f.salon_address %></strong></p>
+                <p class="card-text"><strong><%= f.salon_phone %></strong></p>
+                <% if @user == current_user %>
+                  <%= link_to 'Salon編集', edit_salon_path(f.id), class: "botton-salon btn-sm btn-danger" %>
+                  <%= link_to "Salon削除",salon_path(f.id), class: "botton-salon btn-sm btn-danger", method: :delete,"data-confirm" => "本当に削除しますか?" %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <% if @user == current_user %>
+        <div class="row text-center">
+          <%= link_to 'Salon新規登録', new_salon_path, class: "botton-date btn btn-danger" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 <% if @user == current_user %>
@@ -32,68 +108,38 @@
   </div>
 <% end %>
 
-<!-- サロン情報 -->
-<div class="col-xs-12">
-<div class="row">
-  <div class="col-xs-12 text-center">
-    <h2 class="main-tex2"><strong>Salon</strong></h2>
-  </div>
-</div>
-<div class="row salon-box">
-  <div class="col-xs-12 text-center dis">
-    <% @user_salons.each do |f| %>
-      <div class="card it" style="width: 30rem;">
-        <figure class="effect-scale">
-         <%= attachment_image_tag f, :salon_image, :fill, 260, 220, format: 'jpeg', class: "card-img-top ima" %>
-        </figure>
-        <div class="card-body">
-          <p class="card-text"><strong><%= f.salon_name %></strong></p>
-          <p class="card-text"><strong><%= f.salon_address %></strong></p>
-          <p class="card-text"><strong><%= f.salon_phone %></strong></p>
-          <% if @user == current_user %>
-            <%= link_to 'Salon編集', edit_salon_path(f.id), class: "botton-salon btn-sm btn-danger" %>
-            <%= link_to "Salon削除",salon_path(f.id), class: "botton-salon btn-sm btn-danger", method: :delete,"data-confirm" => "本当に削除しますか?" %>
+
+<% if @user.status == "美容師" %>
+
+  <!-- myスタイル一覧 -->
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <h2 class="main-tex"><strong><%= @user.nickname %> HearStyles</strong></h2>
+      </div>
+    </div>
+      <div class="row">
+        <div class="my-styles">
+          <div class="col-xs-12">
+          <% @user_styles.each do |f| %>
+            <div class="box box-efect">
+              <%= link_to style_path(f.id) do %>
+                <%= attachment_image_tag f, :image, :fill, 200, 250, format: 'jpeg', class: "style-image" %>
+              <% end %>
+            </div>
           <% end %>
+          </div>
         </div>
       </div>
-    <% end %>
-  </div>
-</div>
-<% if @user == current_user %>
-  <div class="row text-center">
-    <%= link_to 'Salon新規登録', new_salon_path, class: "botton-date btn btn-danger" %>
+    <div class="col-xs-12 text-center">
+      <% if @user == current_user %>
+        <div class="row text-center">
+          <%= link_to 'Style新規登録', new_style_path, class: "botton-date bottom-box d btn btn-danger" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>
-</div>
-
-<!-- myスタイル一覧 -->
-<div class="col-xs-12">
-<div class="row">
-  <div class="col-xs-12 text-center">
-    <h2 class="main-tex"><strong><%= @user.nickname %> HearStyles</strong></h2>
-  </div>
-</div>
-  <div class="row">
-    <div class="my-styles">
-    <div class="col-xs-12">
-    <% @user_styles.each do |f| %>
-          <div class="box box-efect">
-            <%= link_to style_path(f.id) do %>
-              <%= attachment_image_tag f, :image, :fill, 200, 250, format: 'jpeg', class: "style-image" %>
-            <% end %>
-          </div>
-    <% end %>
-  </div>
-</div>
-</div>
-  <div class="col-xs-12 text-center">
-    <% if @user == current_user %>
-      <div class="row text-center">
-        <%= link_to 'Style新規登録', new_style_path, class: "botton-date bottom-box d btn btn-danger" %>
-      </div>
-    <% end %>
-  </div>
-</div>
 
 <% if @user == current_user %>
 <!-- myいいね一覧 -->

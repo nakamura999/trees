@@ -1,0 +1,6 @@
+<%= form_with(model: chat) do |f| %>
+  <%= f.text_field :content, :placeholder => "メッセージを入力して下さい", class: "chat-field" %>
+  <%= f.hidden_field :room_id, :value => @room.id %>
+  <br>
+  <%= f.submit "投稿する", class: "btn-sm btn-danger image-tag" %>
+<% end %>

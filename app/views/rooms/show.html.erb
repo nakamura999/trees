@@ -1,2 +1,29 @@
-<h1>Rooms#show</h1>
-<p>Find me in app/views/rooms/show.html.erb</p>
+<div class="row">
+
+  <div class="col-xs-12 text-center chattop">
+    <h2 class="chatname">C H A T R O O M</h2>
+    <% @entries.each do |entry| %>
+      <h4 class="chatname"><%= entry.user.nickname%>さん</h4>
+    <% end %>
+  </div>
+
+  <div class="col-xs-12 text-center">
+   <div class="col-xs-8 chatbox text-center">
+    <% if @chats.present? %>
+      <% @chats.each do |chat| %>
+        <div class="content">
+          <strong><%= chat.content %></strong>
+          <p class="chat-taxt">by <%= chat.user.nickname %>さん</p>
+        </div>
+      <% end %>
+    <% else %>
+      <h3 class="text-center">メッセージはまだありません</h3>
+    <% end %>
+   </div>
+   <div class="col-xs-4">
+   	  <div id="chat_area">
+        <%= render partial: 'rooms/room', locals: {chat: @chat} %>
+      </div>
+   </div>
+  </div>
+</div>

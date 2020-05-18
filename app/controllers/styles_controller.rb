@@ -14,6 +14,18 @@ class StylesController < ApplicationController
     else
       @styles = Style.order("RANDOM()").all
     end
+    # if params[:tag]
+    #   @styles = Style.tagged_with(params[:tag])
+    # elsif params[:status] == "MENS"
+    #   @styles = Style.where(status: "MENS").order("RAND()").all
+    # elsif params[:status] == "LADIES"
+    #   @styles = Style.where(status: "LADIES").order("RAND()").all
+    # elsif params[:jenre_id]
+    #   @jenre = Jenre.find(params[:jenre_id])
+    #   @styles = @jenre.styles.order("RAND()").all
+    # else
+    #   @styles = Style.order("RAND()").all
+    # end
   end
 
   def show

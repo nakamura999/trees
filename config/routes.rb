@@ -20,7 +20,12 @@ devise_for :users, controllers: {
   get 'homes/top'
 
   get 'users/withdraw/:id' => 'users#withdraw', as: :withdraw
-  resources :users, only: [:show, :edit, :update, :destroy]
+  resources :users, only: [:show, :edit, :update, :destroy] do
+    post 'follow/:id' => 'relationships#follow', as: 'follow'
+    post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
+    get 'follows' => 'relationships#follower', as: 'follows'
+    get 'followers' => 'relationships#followed', as: 'followers'
+  end
 
   resources :styles, only: [:index, :show, :new, :edit, :create, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
@@ -30,6 +35,7 @@ devise_for :users, controllers: {
     resource :board_comments, only: [:create, :destroy]
   end
 
+  resources :chats, only: [:create]
   resources :rooms, only: [:create, :show]
 
   resources :salons, only: [:create, :destroy, :new, :edit, :update]

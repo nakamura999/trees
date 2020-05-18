@@ -1,0 +1,6 @@
+document.addEventListener("turbolinks:load", function() {
+
+$("#chat_area"),html("<%= j(render 'content', { chat: @chat}) %>");
+$("textarea").val('')
+
+})
