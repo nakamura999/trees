@@ -205,7 +205,9 @@ background-image: image-url("mains-image4.jpg");
   height: 250px;
   width: 420px;
 }
-
+.contact-body {
+  width: 300px;
+}
 .bottom-set {
   margin: 100px 0;
 }
@@ -229,6 +231,15 @@ background-image: image-url("mains-image4.jpg");
 .flash {
   width: 100%;
   text-align: center;
+}
+.text-contact {
+  font-size: 15px;
+  color: #969696;
+  margin-top: 10px;
+}
+.image-tag-contact {
+  margin: 20px 0 100px 0;
+  width: 300px;
 }
 
 // アニメーション

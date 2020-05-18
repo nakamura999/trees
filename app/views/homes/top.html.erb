@@ -44,5 +44,27 @@
 <div class="row">
  <div class="col-xs-12 text-center">
     <h1 class="title-text"><string>Contact</string></h1>
+    <%= form_for @contact do |f| %>
+    <label class="col-sm-12 text-contact">お名前</label>
+    <div class="col-xs-12">
+      <%= f.text_field :name, class: "contact-body" %>
+    </div>
+
+    <label class="col-sm-12 text-contact">メールアドレス</label>
+    <div class="col-xs-12">
+      <%= f.text_field :email, class: "contact-body" %>
+    </div>
+
+    <label class="col-sm-12 text-contact">問い合わせ内容</label>
+    <div class="col-xs-12">
+      <%= f.text_area :body, class: "contact-body" %>
+    </div>
+
+    <div class="col-sm-12">
+      <%= f.submit "送信する", class: "btn btn-danger image-tag-contact" %>
+    </div>
+  </div>
+</div>
+<% end %>
   </div>
 </div>

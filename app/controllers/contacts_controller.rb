@@ -1,6 +1,14 @@
 class ContactsController < ApplicationController
 
    def create
+   	@contact = Contact.new(contact_params)
+   	if @contact.save
+   		ContactMailer.contact_mail(@contact).deliver
+   		redirect_to root_path
+   		flash[:notice] = "送信しました"
+   	else
+   		render template: "homes/top"
+   	end
    end
 
   private
