@@ -58,7 +58,7 @@
     <div class="col-xs-12 botton-b">
       <div class="col-sm-3 text-center">
       	<%= link_to user_path(@style.user.id) do %>
-          <%= attachment_image_tag @style.user, :profile_image, :fill, 80, 120, fallback: "no_image.jpg", class: "profile-image" %>
+          <%= attachment_image_tag @style.user, :profile_image, :fill, 80, 120, fallback: "no_image.jpg", class: "profile-image style-profile" %>
         <% end %>
       </div>
       <label class="col-sm-8 my-top"><%= @style.user.nickname %><%= link_to 'StylistPage', user_path(@style.user.id), class: "btn-sm btn-danger image-tag stylistb" %></label>

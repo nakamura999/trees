@@ -2,6 +2,10 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
+  # 登録メール機能
+  after_create :send_welcome_mail
+
+  # 論理削除
   acts_as_paranoid
 
   devise :database_authenticatable, :registerable,
@@ -50,6 +54,11 @@ class User < ApplicationRecord
   # フォローしていればtrueを返す
   def following?(user)
     following_user.include?(user)
+  end
+
+  # ユーザ登録後にメールを送信する処理
+  def send_welcome_mail
+    UserMailer.user_welcome_mail(self).deliver
   end
 
 end
