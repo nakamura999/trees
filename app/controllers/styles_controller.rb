@@ -1,31 +1,33 @@
 class StylesController < ApplicationController
+  before_action :authenticate_user!, only:[:new, :edit, :create, :update, :destroy]
+
   def index
     @jenres = Jenre.all
     @tags = ActsAsTaggableOn::Tag.all
-    # if params[:tag]
-    #   @styles = Style.tagged_with(params[:tag])
-    # elsif params[:status] == "MENS"
-    #   @styles = Style.where(status: "MENS").order("RANDOM()").all
-    # elsif params[:status] == "LADIES"
-    #   @styles = Style.where(status: "LADIES").order("RANDOM()").all
-    # elsif params[:jenre_id]
-    #   @jenre = Jenre.find(params[:jenre_id])
-    #   @styles = @jenre.styles.order("RANDOM()").all
-    # else
-    #   @styles = Style.order("RANDOM()").all
-    # end
     if params[:tag]
       @styles = Style.tagged_with(params[:tag])
     elsif params[:status] == "MENS"
-      @styles = Style.where(status: "MENS").order("RAND()").all
+      @styles = Style.where(status: "MENS").order("RANDOM()").all
     elsif params[:status] == "LADIES"
-      @styles = Style.where(status: "LADIES").order("RAND()").all
+      @styles = Style.where(status: "LADIES").order("RANDOM()").all
     elsif params[:jenre_id]
       @jenre = Jenre.find(params[:jenre_id])
-      @styles = @jenre.styles.order("RAND()").all
+      @styles = @jenre.styles.order("RANDOM()").all
     else
-      @styles = Style.order("RAND()").all
+      @styles = Style.order("RANDOM()").all
     end
+    # if params[:tag]
+    #   @styles = Style.tagged_with(params[:tag])
+    # elsif params[:status] == "MENS"
+    #   @styles = Style.where(status: "MENS").order("RAND()").all
+    # elsif params[:status] == "LADIES"
+    #   @styles = Style.where(status: "LADIES").order("RAND()").all
+    # elsif params[:jenre_id]
+    #   @jenre = Jenre.find(params[:jenre_id])
+    #   @styles = @jenre.styles.order("RAND()").all
+    # else
+    #   @styles = Style.order("RAND()").all
+    # end
   end
 
   def show

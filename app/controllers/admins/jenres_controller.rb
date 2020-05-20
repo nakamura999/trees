@@ -1,4 +1,5 @@
 class Admins::JenresController < ApplicationController
+  before_action :authenticate_admin!
 
   layout 'admins'
 

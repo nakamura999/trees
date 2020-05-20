@@ -75,6 +75,9 @@ gem 'acts-as-taggable-on', '~> 6.0'
 
 gem 'paranoia'
 
+gem 'chartkick'
+gem 'groupdate'
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

@@ -14,11 +14,12 @@ class User < ApplicationRecord
   has_many :salons, dependent: :destroy
   has_many :styles, dependent: :destroy
   has_many :boards, dependent: :destroy
-  has_many :boards_comments, dependent: :destroy
+  has_many :board_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorites_styles, through: :favorites, source: :style
   has_many :chats, dependent: :destroy
   has_many :user_rooms, dependent: :destroy
+  has_many :rooms, through: :user_rooms
 
   attachment :profile_image
 
@@ -60,5 +61,9 @@ class User < ApplicationRecord
   def send_welcome_mail
     UserMailer.user_welcome_mail(self).deliver
   end
+
+  def self.search(search)    
+      where(['nickname LIKE ?', "%#{search}%"])    
+  end 
 
 end

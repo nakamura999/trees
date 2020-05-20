@@ -1,4 +1,6 @@
 class SalonsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @salon = Salon.new
   end

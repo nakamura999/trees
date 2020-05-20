@@ -48,6 +48,10 @@
           <%= @user.status %>
         </div>
       </div>
+
+      <div class="col-xs-12 text-right">
+        <%= link_to "会員削除", admins_user_path(@user.id), method: :delete, class: "btn btn-sm btn-primary" %>
+      </div>
 　  </div>
   </div>
 </div>

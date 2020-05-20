@@ -70,6 +70,9 @@
         <ul>
           <% if admin_signed_in? %>
             <li>
+              <%= link_to '管理情報', admins_top_admin_index_path, class: "link-text" %>
+            </li>
+            <li>
               <%= link_to 'ジャンル', admins_jenres_path, class: "link-text" %>
             </li>
             <li>

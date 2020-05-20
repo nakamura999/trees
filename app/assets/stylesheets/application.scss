@@ -656,3 +656,15 @@ background-image: image-url("mains-image4.jpg");
   background: image-url("body.jpg");
   background-size: cover;
 }
+
+// 管理者
+.admin-users {
+  background-color: #252525;
+}
+.admin-user-box {
+  overflow: auto;
+  height: 300px;
+}
+.search-user {
+  color: #252525;
+}

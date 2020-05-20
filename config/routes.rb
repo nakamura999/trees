@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
 
-devise_for :admins, controllers: {
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
-}
+devise_for :admins, controllers: { sessions: 'admins/sessions' }
+
 devise_for :users, controllers: {
   sessions:      'users/sessions',
   passwords:     'users/passwords',
@@ -12,13 +9,17 @@ devise_for :users, controllers: {
 }
 
   namespace :admins do
-     resources :users, only: [:show, :index]
+     resources :users, only: [:show, :index, :destroy]
      resources :jenres, only: [:index, :edit, :create, :update]
+     resources :top_admin, only: [:index]
   end
 
   root 'homes#top'
   get 'homes/top'
-
+  
+  get 'users/passwords/:id', to:"users#passwords", as: :passwords
+  patch '/users/passwords/:id' ,to: "users#pass_update"
+  put   '/users/passwords/:id' ,to: "users#pass_update"
   get 'users/withdraw/:id' => 'users#withdraw', as: :withdraw
   resources :users, only: [:show, :edit, :update, :destroy] do
     post 'follow/:id' => 'relationships#follow', as: 'follow'

@@ -78,9 +78,11 @@
             <li>
               <%= link_to '掲示板', boards_path, class: "link-text" %>
             </li>
-            <li>
-              <%= link_to 'Style 新規作成', new_style_path, class: "link-text" %>
-            </li>
+            <% if current_user.status == "美容師" %>
+              <li>
+                <%= link_to 'Style 新規作成', new_style_path, class: "link-text" %>
+              </li>
+            <% end %>
             <li>
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link-text" %>
             </li>

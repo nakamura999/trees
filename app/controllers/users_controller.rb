@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
 
   def show
     @user = User.find(params[:id])
@@ -35,6 +36,21 @@ class UsersController < ApplicationController
   end
 
   def withdraw
+    @user = User.find(params[:id])
+  end
+
+  def passwords
+    @user = User.find(params[:id])
+  end
+
+  def pass_update
+    @user = User.find(params[:id])
+    if @user.update(password_params)
+      flash[:notice] = "パスワードを変更しました"
+      redirect_to root_path
+    else
+      render :passwords
+    end
   end
 
   def update
@@ -53,14 +69,6 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-          # <div class="col-xs-12">
-          # <% @rooms.each do |room| %>
-          #   <div class="box box-efect">
-          #     <%= room.id %>
-          #   </div>
-          # <% end %>
-          # </div>
-
   private
 
     def user_params
@@ -68,7 +76,7 @@ class UsersController < ApplicationController
     end
 
     def password_params
-      params.require(:user).permit(:password, :password_confirmation, :current_password)
+      params.require(:user).permit(:password, :password_confirmation)
     end
 
 end

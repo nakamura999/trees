@@ -4,7 +4,7 @@
 <p>退会すると、会員登録情報や<br>これまでの機能がご利用できなくなります。<br>退会する場合は、「退会する」をクリックしてください。</p>
 
 <div class="actions">
-	<%= link_to "退会する", user_path, method: :delete, class: "btn btn-sm btn-primary" %>
+	<%= link_to "退会する", user_path(@user.id), method: :delete, class: "btn btn-sm btn-primary" %>
     <%= link_to "退会しない", edit_user_path, class: "btn btn-sm btn-danger" %>
 </div>
 </div>
