@@ -1,5 +1,5 @@
 <!-- User詳細ページ -->
-<div class="row">
+<div class="row style-main-visual">
   <div class="col-xs-12 text-center">
     <% if @user.status == "美容師" %>
       <h2 class="main-tex"><strong>Stylist Page</strong></h2>
@@ -9,12 +9,10 @@
       <h2 class="main-tex"><strong>User Page</strong></h2>
     <% end %>
   </div>
-</div>
 
-<!-- my情報 -->
-<div class="row">
+  <!-- my情報 -->
   <div class="col-xs-6 text-center">
-    <%= attachment_image_tag @user, :profile_image, :fill, 300, 360, fallback: "no_image.jpg", class: "profile-image" %>
+    <%= attachment_image_tag @user, :profile_image, :fill, 300, 360, fallback: "no_image.jpg", class: "profile-image-white" %>
     <div class="col-xs-12 text-center follow-botton">
       <%= render 'relationships/follow', user: @user %>
     </div>
@@ -105,18 +103,18 @@
       </div>
     <% end %>
   </div>
+  <% if @user == current_user %>
+    <div class="row text-center">
+      <%= link_to 'マイページ編集', edit_user_path, class: "botton-date btn btn-danger" %>
+    </div>
+  <% end %>
 </div>
-<% if @user == current_user %>
-  <div class="row text-center">
-    <%= link_to 'マイページ編集', edit_user_path, class: "botton-date btn btn-danger" %>
-  </div>
-<% end %>
 
 
 <% if @user.status == "美容師" %>
 
   <!-- myスタイル一覧 -->
-  <div class="col-xs-12">
+  <div class="col-xs-12 style-main-visual">
     <div class="row">
       <div class="col-xs-12 text-center">
         <h2 class="main-tex"><strong><%= @user.nickname %> HearStyles</strong></h2>
@@ -147,7 +145,7 @@
 
 <% if @user == current_user %>
 <!-- myいいね一覧 -->
-<div class="col-xs-12">
+<div class="col-xs-12 style-main-visual">
   <div class="row">
     <div class="col-xs-12 text-center">
       <h2 class="main-tex"><strong>お気に入り Styles</strong></h2>

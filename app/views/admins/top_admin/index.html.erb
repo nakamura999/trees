@@ -1,5 +1,51 @@
 <div class="row">
-	<div class="col-xs-12">
-		<%= line_chart @users_count, download: true %>
+	<div class="col-xs-12 text-center">
+		<h2 class="admins-top"><strong>Admins Page</strong></h2>
 	</div>
+
+	<div class="col-xs-6 text-center graph-main today-main">
+        <h4><strong>本日のデータ</strong></h4>
+        <p class="today-date">問い合わせ件数 : <%= @contact_today %> 件</p>
+        <p class="today-date">会員登録数 : <%= @user_today %> 件</p>
+        <p class="today-date">Style登録数 : <%= @style_today %> 件</p>
+        <p class="today-date">掲示板利用数 : <%= @board_today %> 件</p>
+        <%= link_to '会員一覧', admins_users_path, class: "botton-graph" %>
+        <%= link_to 'ジャンル', admins_jenres_path, class: "botton-graph" %>
+    </div>
+
+	<div class="col-xs-6 text-center graph-main">
+		<label class="col-sm-12 text-user">日別会員登録者数 (総会員数 : <%= @users.count %>)</label>
+		<div class="col-xs-12 graph">
+		  <%= line_chart @users_count, download: true, colors: ['#FF4F02'] %>
+	    </div>
+	</div>
+
+	<div class="col-xs-6 text-center graph-main">
+		<label class="col-sm-12 text-user">日別STYLE登録数 (総登録数 : <%= @styles.count %>)</label>
+		<div class="col-xs-12 graph">
+		  <%= column_chart @styles_count, download: true, colors: ['#330066'] %>
+	    </div>
+	</div>
+
+	<div class="col-xs-6 text-center graph-main">
+		<label class="col-sm-12 text-user">ジャンル別登録数</label>
+		<div class="col-xs-12 graph">
+		  <%= pie_chart @jenres_count, download: true %>
+	    </div>
+	</div>
+
+	<div class="col-xs-6 text-center graph-main">
+		<label class="col-sm-12 text-user">日別掲示板利用数 (総登録数 : <%= @boards.count %>)</label>
+		<div class="col-xs-12 graph">
+		  <%= line_chart @boards_count, download: true, colors: ['#00ECFF'] %>
+	    </div>
+	</div>
+
+	<div class="col-xs-6 text-center graph-main">
+		<label class="col-sm-12 text-user">日別問い合わせ数</label>
+		<div class="col-xs-12 graph">
+		  <%= column_chart @contact_count, download: true, colors: ['#FF5192'] %>
+	    </div>
+	</div>
+
 </div>

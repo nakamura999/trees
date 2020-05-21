@@ -119,6 +119,16 @@ footer {
   color: #e3e3e3;
 }
 
+.tops-main {
+  border: 1px dashed white;
+  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
+  margin-top: 60px;
+  background-color: #252525;
+  color: white;
+}
+.bottom-b {
+  margin-bottom: 20px;
+}
 .top-logo {
   background-image: image-url("trees-logo.jpg");
   background-size: cover;
@@ -161,7 +171,7 @@ background-image: image-url("mains-image4.jpg");
 }
 
 .title-text {
-  padding: 80px 0px 20px 0;
+  padding: 20px auto;
   border-bottom: 3px solid #969696;
 }
 .image-box {
@@ -208,10 +218,6 @@ background-image: image-url("mains-image4.jpg");
 .follow-botton {
   margin-top: 30px;
   margin-bottom: 10px;
-}
-.main-back {
-  background-color: #969696;
-  color: #e3e3e3;
 }
 .top-b {
   margin-top: 30px;
@@ -348,6 +354,9 @@ background-image: image-url("mains-image4.jpg");
 .profile-image {
   box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
 }
+.profile-image-white {
+  box-shadow: 1px 8px 12px #969696;
+}
 .style-profile {
   width: 80px;
   height: 100px;
@@ -366,6 +375,8 @@ background-image: image-url("mains-image4.jpg");
   margin: 0 auto;
   color: #e3e3e3;
   box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
+  border: 1px dashed white;
+  padding-top: 10px;
 }
 .syadow {
   border: 2px solid;
@@ -533,11 +544,21 @@ background-image: image-url("mains-image4.jpg");
 .index-status {
   background-color: #252525;
   height: 100%;
-  padding-bottom: 500px; 
+  padding-bottom: 500px;
+  border: 1px dashed white;
+  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
 }
 .index-top {
   margin-top: 30px;
   margin-bottom: 10px;
+}
+.style-main-visual {
+  margin: 10px auto;
+  padding-bottom: 20px;
+  background-color: #252525;
+  border: 1px dashed white;
+  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
+  color: white;
 }
 
 // 掲示板
@@ -561,6 +582,9 @@ background-image: image-url("mains-image4.jpg");
   padding: 20px;
   margin-bottom: 50px;
   border-radius: 35px;
+  border: 1px dashed white;
+  background-color: #252525;
+  color: #e3e3e3;
 }
 .bottom-pa {
   padding-top: 10px;
@@ -573,8 +597,12 @@ background-image: image-url("mains-image4.jpg");
   width: 100%;
   overflow: auto;
   height: 1000px;
-  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
   margin-bottom: 50px;
+  color: #e3e3e3;
+  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
+  border: 1px dashed white;
+  background-color: #252525;
+  padding: 20px;
 }
 .comment-count {
   margin-top: 10px;
@@ -639,7 +667,7 @@ background-image: image-url("mains-image4.jpg");
   border: 1px solid black;
 }
 .room-users {
-  background-color: white;
+  background-color: #969696;
   border-radius: 20px;
   width: 200px;
   margin: 10px auto;
@@ -649,12 +677,11 @@ background-image: image-url("mains-image4.jpg");
 }
 .rooms-user {
   box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
-  border-radius: 20px;
   height: 200px;
   overflow: auto;
   margin-top: 10px;
-  background: image-url("body.jpg");
-  background-size: cover;
+  background-color: #252525;
+  border: 1px dashed white;
 }
 
 // 管理者
@@ -663,8 +690,67 @@ background-image: image-url("mains-image4.jpg");
 }
 .admin-user-box {
   overflow: auto;
-  height: 300px;
+  height: 350px;
 }
 .search-user {
   color: #252525;
+}
+.user-main-text {
+  background-color: #252525;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+.back-black {
+  background-color: #252525;
+  margin: 10px auto; 
+}
+.admin-user-items {
+  border-bottom: 1px dashed white;
+  margin-bottom: 30px;
+}
+// 管理者情報
+.graph {
+  background-color: white;
+}
+.graph-main {
+  margin: 30px 0 20px 0;
+  background-color: #252525;
+  color: white;
+  padding: 20px;
+  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
+}
+.admins-top {
+  margin: 20px 0 10px 0;
+  background-color: #252525;
+  color: white;
+  border-radius: 20px;
+}
+.admins-tops {
+  margin-bottom: 40px;
+  background-color: #252525;
+  color: white;
+  border-radius: 20px;
+}
+.today-date {
+  margin: 30px auto;
+  border-bottom: 1px dashed white;
+}
+.botton-graph {
+  padding: 10px;
+  background-color: #969696;
+  border-radius: 20px;
+  color: white;
+}
+.today-main {
+  height: 370px;
+}
+.main-back {
+  background-color: #969696;
+  color: #e3e3e3;
+  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
+}
+.admin-user-main {
+  margin-bottom: 10px;
+  border: 1px dashed white;
+  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
 }
