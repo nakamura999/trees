@@ -5,6 +5,7 @@
 </div>
 
 <%= form_for @style do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
 <div class="row">
   <div class="row">
     <div class="col-xs-12 text-center">

@@ -20,6 +20,7 @@ class Admins::JenresController < ApplicationController
       else
         @jenre = Jenre.new
         @jenres = Jenre.all
+        flash[:notice] = "ジャンルは1文字以上20文字以内です"
         render :index
       end
   end

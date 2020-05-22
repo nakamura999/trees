@@ -5,6 +5,7 @@
 </div>
 
 <%= form_for @salon do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
 <div class="row">
   <div class="col-xs-6 text-center">
     <%= attachment_image_tag @salon, :salon_image, :fill, 300, 250, fallback: "no_image.jpg", id: :img_prev, class: "profile-image pres" %><br>

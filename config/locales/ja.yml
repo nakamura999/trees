@@ -1,0 +1,24 @@
+ja:
+  activerecord:
+    models:
+      style:
+      user:
+      salon:
+    attributes:
+      style:
+        name: "名前"
+        content: "スタイルPR"
+        price: "値段"
+        color_style: "カラー"
+        menu: "メニュー"
+      user:
+        name: "氏名"
+        kana_name: "フリガナ"
+        nickname: "ニックネーム"
+        prefectures: "都道府県"
+        body: "PR"
+        email: "メールアドレス"
+      salon:
+        salon_name: "サロン名"
+        salon_address: "サロン住所"
+        salon_phone: "サロン電話番号"

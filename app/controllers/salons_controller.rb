@@ -16,7 +16,6 @@ class SalonsController < ApplicationController
         redirect_to user_path(current_user)
         flash[:notice] = "サロンを追加しました"
     else
-        @salon = Salon.new
         render :new
     end
   end

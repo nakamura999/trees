@@ -7,6 +7,7 @@ class ContactsController < ApplicationController
    		redirect_to root_path
    		flash[:notice] = "送信しました"
    	else
+      flash[:notice] = "送信できませんでした"
    		render template: "homes/top"
    	end
    end

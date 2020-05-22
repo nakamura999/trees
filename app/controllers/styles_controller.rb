@@ -48,14 +48,24 @@ class StylesController < ApplicationController
   def create
     @style = Style.new(style_params)
     @style.user_id = current_user.id
-    @style.save
-    redirect_to style_path(@style.id)
+    if @style.save
+      flash[:notice] = "スタイルを登録しました"
+      redirect_to style_path(@style.id)
+    else
+      @tags = ActsAsTaggableOn::Tag.all
+      render :new
+    end
   end
 
   def update
     @style = Style.find(params[:id])
-    @style.update(style_params)
-    redirect_to style_path(@style.id)
+    if @style.update(style_params)
+      flash[:notice] = "スタイルを更新しました"
+      redirect_to style_path(@style.id)
+    else
+      @tags = ActsAsTaggableOn::Tag.all
+      render :edit
+    end
   end
 
   def destroy

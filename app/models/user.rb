@@ -27,9 +27,10 @@ class User < ApplicationRecord
   # user名前２から20文字いない
   validates :kana_name, presence: true, length: 2..20
   validates :nickname, presence: true, length: 2..20
-  validates :prefectures, presence: true
+  validates :prefectures, presence: true, length: 2..5
   validates :body, length: {maximum: 100}
   # プロフィール文50文字いない
+  validates :email, presence: true
 
   enum status: { 一般: 0, 美容師: 1 }
 

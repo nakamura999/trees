@@ -15,10 +15,12 @@ class BoardsController < ApplicationController
     @board = Board.new(board_params)
     @board.user_id = current_user.id
     if @board.save
+      flash[:notice] = "投稿しました"
       redirect_to board_path(@board.id)
     else
       @boards = Board.all.order(created_at: :desc)
       @board = Board.new
+      flash[:notice] = "投稿に失敗しました"
       render action: :index
     end
   end
