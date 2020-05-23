@@ -16,6 +16,7 @@ class StylesController < ApplicationController
     # else
     #   @styles = Style.order("RANDOM()").all
     # end
+    # Mysql用(本番環境)
     if params[:tag]
       @styles = Style.tagged_with(params[:tag])
     elsif params[:status] == "MENS"

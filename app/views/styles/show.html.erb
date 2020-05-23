@@ -44,7 +44,7 @@
 
     <label class="col-sm-10 my-top text-styles"><%= @style.content %></label>
 
-    <label class="col-sm-10 my-top"><%= @style.status %> | <%= @style.jenre.name %> | <%= @style.color_style %></label>
+    <label class="col-sm-10 my-top"><%= @style.status %> | <%= @style.jenre.name %> | Color : <%= @style.color_style %></label>
 
     <label class="col-sm-10 my-top"><%= @style.menu %> | ¥ <%= @style.price %></label>
 
@@ -65,6 +65,8 @@
       <label class="col-sm-8 my-top style-userb"><%= @style.user.body %></label>
 
     </div>
+
+    <!-- myサロン一覧 -->
     <% @style.user.salons.each do |f| %>
       <div class="col-sm-12 text-styles botton-b">
         <label class="col-sm-8 my-top style-userb"><%= f.salon_name %></label>

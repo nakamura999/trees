@@ -435,10 +435,10 @@ background-image: image-url("mains-image4.jpg");
   font-size: 13px;
   margin-top: 15px;
   padding: 10px;
-  background: image-url("body.jpg");
-  background-size: cover;
+  background-color: #222222;
   color: #e3e3e3;
-  border-radius: 20px;
+  border: 1px dashed white;
+  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
 }
 .text-style-mini {
   font-size: 11px;
