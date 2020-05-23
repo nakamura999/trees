@@ -476,16 +476,23 @@ background-image: image-url("mains-image4.jpg");
   margin-right: 10px;
   font-size: 13px;
 }
-
+.my-styles-user {
+  width: 100%;
+  overflow: auto;
+  height: 600px;
+  padding: 0 50px;
+}
 .my-styles {
   width: 100%;
   overflow: auto;
   height: 600px;
+  padding: 0 60px;
 }
 .my-styles2 {
   width: 100%;
   overflow: auto;
-  height: 1400px;
+  height: 1500px;
+  padding: 0 60px;
 }
 .scloll-top {
   overflow: scroll;
