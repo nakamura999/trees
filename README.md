@@ -55,7 +55,7 @@ Mysql
 - 問い合わせ機能
 - 会員登録時登録完了メール
 - スタイル一覧はランダム表示(下記一覧画面)
-![main-admin](app/assets/images/trees-main-styles.jpg)
+![main-styles](app/assets/images/trees-main-styles.jpg)
 
 ### 管理者側
 - アクティビティをチェックできるダッシュボード(グラフにchartkick使用)
