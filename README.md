@@ -2,6 +2,8 @@
 
 - http://54.248.14.173/
 
+![main](app/assets/images/trees-main-top1.jpg)
+
 ## サイト概要
 ヘアスタイルなどの情報配信。
 コミュニケーションが取れる。
