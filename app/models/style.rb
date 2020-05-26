@@ -14,10 +14,10 @@ class Style < ApplicationRecord
     end
 
     validates :name, presence: true, length: 2..20
-    validates :content, length: {maximum: 100}
+    validates :content, presence: true, length: {maximum: 100}
     validates :price, length: {maximum: 10}
-    validates :color_style, length: {maximum: 20}
-    validates :menu, length: true, length: 2..25
+    validates :color_style, presence: true, length: {maximum: 20}
+    validates :menu, presence: true, length: 2..25
 
     enum status: { MENS: 0, LADIES: 1 }
 
