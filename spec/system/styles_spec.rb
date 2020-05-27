@@ -9,7 +9,7 @@ describe '投稿のテスト' do
   let!(:style2) { create(:style, user: user2) }
   before do
     visit new_user_session_path
-    fill_in 'user[emial]', with: user.email
+    fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
     click_button 'Log in'
   end
@@ -48,17 +48,17 @@ describe '投稿のテスト' do
       it '投稿に成功する' do
         fill_in 'style[name]', with: Faker::Lorem.characters(number:5)
         fill_in 'style[content]', with: Faker::Lorem.characters(number:20)
-        fill_in 'style[price]', Faker::Number.number(digits: 6)
+        fill_in 'style[price]', with: Faker::Number.number(digits: 6)
         fill_in 'style[menu]', with: Faker::Lorem.characters(number:5)
         fill_in 'style[color_style]', with: Faker::Lorem.characters(number:5)
-        fill_in 'style[status]', with: 'MENS'
+        # fill_in 'style[status]', with: 0
         click_button '新規作成'
         expect(page).to have_content 'スタイルを登録'
-        expect(current_path).to eq '/styles/' + style.id.to_s
+        expect(page).to have_content '登録'
       end
       it '投稿に失敗する' do
         click_button '新規作成'
-        expect(current_path).to eq(new_style_path)
+        expect(page).to have_content '入力してください'
       end
     end
   end
@@ -72,7 +72,7 @@ describe '投稿のテスト' do
     context '他人の投稿の編集画面への遷移' do
       it '遷移できない' do
         visit edit_style_path(style2)
-        expect(current_path).to eq('/styles')
+        expect(current_path).to eq('/styles/' + style.id.to_s)
       end
     end
     context '表示の確認' do
@@ -118,7 +118,7 @@ describe '投稿のテスト' do
         visit edit_style_path(style)
         fill_in 'style[name]', with: ''
         click_button '編集完了'
-        expect(current_path).to eq '/styles/' + style.id.to_s + "/edit"
+        expect(page).to have_content '入力してください'
       end
     end
   end
@@ -172,11 +172,11 @@ describe '投稿のテスト' do
     end
     context '自分のstyle詳細画面の表示を確認' do
       it 'styleの編集リンクが表示される' do
-        visit style_path book
+        visit style_path(style)
         expect(page).to have_link '編集する', href: edit_style_path(style)
       end
       it 'styleの削除リンクが表示される' do
-        visit style_path book
+        visit style_path(style)
         expect(page).to have_link '削除する', href: style_path(style)
       end
     end

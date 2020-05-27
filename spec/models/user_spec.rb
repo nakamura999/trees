@@ -62,18 +62,18 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     end
 
     # 都道府県
-    context 'prefectureカラム' do
+    context 'prefecturesカラム' do
       let(:test_user) { user }
       it '空欄でないこと' do
-        test_user.prefecture = ''
+        test_user.prefectures = ''
         is_expected.to eq false;
       end
       it '2文字以上であること' do
-        test_user.prefecture = Faker::Lorem.characters(number:1)
+        test_user.prefectures = Faker::Lorem.characters(number:1)
         is_expected.to eq false;
       end
       it '5文字以下であること' do
-        test_user.prefecture = Faker::Lorem.characters(number:6)
+        test_user.prefectures = Faker::Lorem.characters(number:6)
         is_expected.to eq false;
       end
     end

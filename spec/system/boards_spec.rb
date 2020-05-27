@@ -7,13 +7,16 @@ describe '投稿のテスト' do
   let!(:board2) { create(:board, user: user2) }
   before do
     visit new_user_session_path
-    fill_in 'user[emial]', with: user.email
+    fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
     click_button 'Log in'
   end
 
   describe 'board新規投稿' do
     context '動作の確認' do
+      before do
+        visit boards_path
+      end
       it 'titleフォームが表示される' do
         expect(page).to have_field 'board[title]'
       end

@@ -44,6 +44,9 @@ class StylesController < ApplicationController
   def edit
     @style = Style.find(params[:id])
     @tags = ActsAsTaggableOn::Tag.all
+    if @style.user_id != current_user.id
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def create

@@ -37,11 +37,11 @@ RSpec.describe 'salonモデルのテスト', type: :model do
         expect(salon.valid?).to eq false;
       end
       it '2文字以上であること' do
-        salon.salon_phone = Faker::PhoneNumber.characters(number:1)
+        salon.salon_phone = Faker::Number.number(digits: 1)
         expect(salon.valid?).to eq false;
       end
-      it '20文字以下であること' do
-        salon.salon_phone = Faker::PhoneNumber.characters(number:13)
+      it '12文字以下であること' do
+        salon.salon_phone = Faker::Number.number(digits: 13)
         expect(salon.valid?).to eq false;
       end
     end

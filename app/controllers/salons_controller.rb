@@ -7,6 +7,9 @@ class SalonsController < ApplicationController
 
   def edit
     @salon = Salon.find(params[:id])
+    if @salon.user_id != current_user.id
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def create

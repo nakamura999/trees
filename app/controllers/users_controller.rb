@@ -33,6 +33,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if current_user != @user
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def withdraw

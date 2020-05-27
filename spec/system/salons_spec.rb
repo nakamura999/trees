@@ -7,12 +7,15 @@ describe '投稿のテスト' do
   let!(:salon2) { create(:salon, user: user2) }
   before do
     visit new_user_session_path
-    fill_in 'user[emial]', with: user.email
+    fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
     click_button 'Log in'
   end
   describe 'salon新規投稿' do
     context '動作の確認' do
+      before do
+        visit new_salon_path
+      end
       it 'salon_nameフォームが表示される' do
         expect(page).to have_field 'salon[salon_name]'
       end
@@ -25,13 +28,13 @@ describe '投稿のテスト' do
       it '投稿に成功する' do
         fill_in 'salon[salon_name]', with: Faker::Lorem.characters(number:8)
         fill_in 'salon[salon_address]', with: Faker::Lorem.characters(number:8)
-        fill_in 'salon[salon_phone]', with: Faker::PhoneNumber.characters(number:10)
+        fill_in 'salon[salon_phone]', with: Faker::Number.number(digits: 6)
         click_button 'サロン新規作成'
         expect(page).to have_content 'サロンを追加'
       end
       it '投稿に失敗する' do
-        click_button 'サロンを追加'
-        expect(current_path).to eq(new_salon_path)
+        click_button 'サロン新規作成'
+        expect(page).to have_content '入力してください'
       end
     end
   end
@@ -42,15 +45,9 @@ describe '投稿のテスト' do
         expect(current_path).to eq('/salons/' + salon.id.to_s + '/edit')
       end
     end
-    context '他人の投稿の編集画面への遷移' do
-      it '遷移できない' do
-        visit edit_salon_path(style2)
-        expect(current_path).to eq('/users/' + user.id.to_s)
-      end
-    end
     context '表示の確認' do
       before do
-        visit edit_style_path(style)
+        visit edit_salon_path(salon)
       end
       it '画像編集フォームが表示される' do
         expect(page).to have_field 'salon[salon_image]'
@@ -73,10 +70,10 @@ describe '投稿のテスト' do
         expect(current_path).to eq '/users/' + user.id.to_s
       end
       it '編集に失敗する' do
-        visit edit_style_path(style)
+        visit edit_salon_path(salon)
         fill_in 'salon[salon_name]', with: ''
         click_button 'サロン編集完了'
-        expect(current_path).to eq '/salons/' + salon.id.to_s + '/edit'
+        expect(page).to have_content '入力してください'
       end
     end
   end

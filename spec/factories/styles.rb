@@ -5,7 +5,7 @@ FactoryBot.define do
     color_style { Faker::Lorem.characters(number:5) }
     menu { Faker::Lorem.characters(number:5) }
     price { Faker::Number.number(digits: 6) }
-    status { "MENS" }
+    status { 0 }
     user
     jenre
   end
