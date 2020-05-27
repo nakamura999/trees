@@ -4,7 +4,7 @@ FactoryBot.define do
     name { Faker::Lorem.characters(number:10) }
     kana_name { Faker::Lorem.characters(number:10) }
     nickname { Faker::Lorem.characters(number:10) }
-    prefectures { Faker::Lorem.characters(number:10) }
+    prefectures { Faker::Lorem.characters(number:4) }
     email { Faker::Internet.email }
     body { Faker::Lorem.characters(number:20) }
     status { "美容師" }

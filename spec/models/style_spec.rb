@@ -12,11 +12,11 @@ RSpec.describe 'styleモデルのテスト', type: :model do
       end
       it '2文字以上であること' do
         style.name = Faker::Lorem.characters(number:1)
-        is_expected.to eq false;
+        expect(style.valid?).to eq false;
       end
       it '20文字以下であること' do
         style.name = Faker::Lorem.characters(number:21)
-        is_expected.to eq false;
+        expect(style.valid?).to eq false;
       end
     end
 
@@ -33,7 +33,7 @@ RSpec.describe 'styleモデルのテスト', type: :model do
 
     context 'priceカラム' do
       it '10文字以下であること' do
-        style.price = Faker::Lorem.characters(number:11)
+        style.price = Faker::Number.number(digits: 11)
         expect(style.valid?).to eq false;
       end
     end
@@ -56,11 +56,11 @@ RSpec.describe 'styleモデルのテスト', type: :model do
       end
       it '2文字以上であること' do
         style.menu = Faker::Lorem.characters(number:1)
-        is_expected.to eq false;
+        expect(style.valid?).to eq false;
       end
       it '20文字以下であること' do
         style.menu = Faker::Lorem.characters(number:26)
-        is_expected.to eq false;
+        expect(style.valid?).to eq false;
       end
     end
 
@@ -69,7 +69,7 @@ RSpec.describe 'styleモデルのテスト', type: :model do
   describe 'アソシエーションのテスト' do
     context 'Userモデルとの関係' do
       it 'N:1となっている' do
-        expect(Book.reflect_on_association(:user).macro).to eq :belongs_to
+        expect(Style.reflect_on_association(:user).macro).to eq :belongs_to
       end
     end
   end
