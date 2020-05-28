@@ -11,12 +11,10 @@ describe 'ユーザー認証のテスト' do
         fill_in 'user[kana_name]', with: Faker::Lorem.characters(number:10)
         fill_in 'user[nickname]', with: Faker::Lorem.characters(number:10)
         fill_in 'user[prefectures]', with: Faker::Lorem.characters(number:4)
-        fill_in 'user[body]', with: Faker::Lorem.characters(number:20)
-        fill_in 'user[status]', with: "MENS"
         fill_in 'user[email]', with: Faker::Internet.email
         fill_in 'user[password]', with: 'password'
         fill_in 'user[password_confirmation]', with: 'password'
-        click_button 'Sign up'
+        click_button '新規登録'
 
         expect(current_path).to eq(styles_path)
       end
@@ -25,13 +23,12 @@ describe 'ユーザー認証のテスト' do
         fill_in 'user[kana_name]', with: ''
         fill_in 'user[nickname]', with: ''
         fill_in 'user[prefectures]', with: ''
-        fill_in 'user[body]', with: ''
         fill_in 'user[email]', with: ''
         fill_in 'user[password]', with: ''
         fill_in 'user[password_confirmation]', with: ''
-        click_button 'Sign up'
+        click_button '新規登録'
 
-        expect(current_path).to eq(new_user_registration_path)
+        expect(page).to have_content '入力してください'
       end
     end
   end
@@ -79,12 +76,6 @@ describe 'ユーザーのテスト' do
         expect(current_path).to eq('/users/' + user.id.to_s + '/edit')
       end
     end
-    context '他人の編集画面への遷移' do
-      it '遷移できない' do
-        visit edit_user_path(test_user2)
-        expect(current_path).to eq('/users/' + user.id.to_s)
-      end
-    end
 
     context '表示の確認' do
       before do
@@ -116,11 +107,9 @@ describe 'ユーザーのテスト' do
       end
       it 'パスワード編集リンクが表示される' do
         expect(page).to have_link 'パスワード変更', href: passwords_path(user)
-        expect(page).to have_link 'パスワード変更', href: passwords_path(test_user2)
       end
       it '退会ページリンクが表示される' do
         expect(page).to have_link '退会する', href: withdraw_path(user)
-        expect(page).to have_link '退会する', href: withdraw_path(test_user2)
       end
       it '編集に成功する' do
         click_button '変更を保存'
@@ -154,7 +143,6 @@ describe 'ユーザーのテスト' do
       end
       it 'マイページ編集リンクが表示される' do
         expect(page).to have_link 'マイページ編集', href: edit_user_path(user)
-        expect(page).to have_link 'マイページ編集', href: edit_user_path(test_user2)
       end
       it 'SALON新規登録リンクが表示される' do
         expect(page).to have_link 'Salon新規登録', href: new_salon_path

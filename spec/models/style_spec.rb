@@ -67,9 +67,9 @@ RSpec.describe 'styleモデルのテスト', type: :model do
   end
 
   describe 'アソシエーションのテスト' do
-    context 'Userモデルとの関係' do
-      it 'N:1となっている' do
-        expect(Style.reflect_on_association(:user).macro).to eq :belongs_to
+    context 'styleモデルとの関係' do
+      it '1:Nとなっている' do
+        expect(User.reflect_on_association(:styles).macro).to eq :has_many
       end
     end
   end

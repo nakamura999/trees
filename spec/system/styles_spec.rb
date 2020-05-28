@@ -69,12 +69,6 @@ describe '投稿のテスト' do
         expect(current_path).to eq('/styles/' + style.id.to_s + '/edit')
       end
     end
-    context '他人の投稿の編集画面への遷移' do
-      it '遷移できない' do
-        visit edit_style_path(style2)
-        expect(current_path).to eq('/styles/' + style.id.to_s)
-      end
-    end
     context '表示の確認' do
       before do
         visit edit_style_path(style)
