@@ -37,7 +37,7 @@
       <div class="container">
         <% flash.each do |message_type, message| %>
           <% if flash[:notice] %>
-            <div class="alert alert-danger">
+            <div class="alert alert-warning">
               <%= message %>
             </div>
           <% end %>
