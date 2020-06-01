@@ -62,7 +62,7 @@ Mysql
 - 会員の一覧・会員の削除
 - ジャンルの追加・編集
 - 下記管理者側top画面
-![main-admin](app/assets/images/trees-main-admin.jpg)
+![main-admin](app/assets/images/trees-main-admin2.jpg)
 
 ## 設計書
 デザインシート
