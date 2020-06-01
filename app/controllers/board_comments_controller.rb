@@ -3,6 +3,7 @@ class BoardCommentsController < ApplicationController
 		@board = Board.find(params[:board_id])
 		@board_comment = @board.board_comments.new(board_comment_params)
 		@board_comment.user_id = current_user.id
+		@board_comment.score = Language.get_data(board_comment_params[:comment])
 		if @board_comment.save
 		  flash[:notice] = "コメントしました"
 		  redirect_to board_path(@board.id)
