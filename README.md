@@ -37,7 +37,7 @@ test-user(美容師)email : trees.test2020@gmail.com
 - Rails 5.2.4.2
 
 ### テスト
-- RSpec
+- RSpec(factory_bot_rails/faker)
 
 ### 環境
 - 開発環境
