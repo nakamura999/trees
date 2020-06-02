@@ -34,27 +34,27 @@
   <div class="row bottom-box">
     <div class="col-xs-6">
       <label class="col-sm-12 text-style">スタイル名</label>
-      <div class="col-sm-12"><%= f.text_field :name, class: "my-edit" %></div>
+      <div class="col-sm-12"><%= f.text_field :name, placeholder: "20文字以内", class: "my-edit" %></div>
 
       <label class="col-sm-12 text-style">性別</label>
       <div class="col-sm-12"><%= f.select :status, ['MENS', 'LADIES'] %></div>
 
       <label class="col-sm-12 text-style">スタイルPR</label>
-      <div class="col-sm-12"><%= f.text_area :content, class: "my-edit" %></div>
+      <div class="col-sm-12"><%= f.text_area :content, placeholder: "100文字以内", class: "my-edit" %></div>
 
       <label class="col-sm-12 text-style">ジャンル</label>
       <div class="col-sm-12"><%= f.select :jenre_id, Jenre.all.collect{ |j| [ j.name, j.id]} %></div>
 
       <label class="col-sm-12 text-style">メニュー</label>
-      <div class="col-sm-12"><%= f.text_field :menu, class: "my-edit" %></div>
+      <div class="col-sm-12"><%= f.text_field :menu, placeholder: "カット・カラー：25文字以内", class: "my-edit" %></div>
 
       <label class="col-sm-12 text-style">カラー</label>
       <label class="col-sm-12 text-style-mini">(カラー無しの場合は、「ノーカラー」とご記入ください)</label>
-      <div class="col-sm-12"><%= f.text_field :color_style, class: "my-edit" %></div>
+      <div class="col-sm-12"><%= f.text_field :color_style, placeholder: "ノーカラー：20文字以内", class: "my-edit" %></div>
 
       <label class="col-sm-12 text-style">料金(税込)</label>
       <label class="col-sm-12 text-style-mini">(「¥」,「,」無し数字のみ、例、12000)</label>
-      <div class="col-sm-12"><%= f.text_field :price, class: "my-edit" %></div>
+      <div class="col-sm-12"><%= f.text_field :price, placeholder: "10000：10文字以内", class: "my-edit" %></div>
     </div>
 
     <div class="col-xs-6">

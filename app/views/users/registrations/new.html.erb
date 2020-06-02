@@ -6,28 +6,28 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field botton-b">
-    <label>お名前 (1文字以上20文字以内)</label><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name", size: "50", class: "text-pas" %>
+    <label>お名前</label><br />
+    <%= f.text_field :name, autofocus: true, placeholder: "20文字以内", autocomplete: "name", size: "50", class: "text-pas" %>
   </div>
 
   <div class="field botton-b">
-    <label>フリガナ (1文字以上20文字以内)</label><br />
-    <%= f.text_field :kana_name, autofocus: true, autocomplete: "kana_name", size: "50", class: "text-pas" %>
+    <label>フリガナ</label><br />
+    <%= f.text_field :kana_name, autofocus: true, placeholder: "20文字以内", autocomplete: "kana_name", size: "50", class: "text-pas" %>
   </div>
 
   <div class="field botton-b">
-    <label>ニックネーム (1文字以上20文字以内)</label><br />
-    <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", size: "50", class: "text-pas" %>
+    <label>ニックネーム</label><br />
+    <%= f.text_field :nickname, autofocus: true, placeholder: "20文字以内", autocomplete: "nickname", size: "50", class: "text-pas" %>
   </div>
 
   <div class="field botton-b">
-    <label>都道府県 (都道府県のみ：5文字以内 例：東京都)</label><br />
-    <%= f.text_field :prefectures, autofocus: true, autocomplete: "prefectures", size: "50", class: "text-pas" %>
+    <label>都道府県 (都道府県のみ 例：東京都)</label><br />
+    <%= f.text_field :prefectures, autofocus: true, placeholder: "東京都：5文字以内", autocomplete: "prefectures", size: "50", class: "text-pas" %>
   </div>
 
   <div class="field botton-b">
     <label>メールアドレス (IDになります)</label><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "50", class: "text-pas" %>
+    <%= f.email_field :email, autofocus: true, placeholder: "trees@email.com", autocomplete: "email", size: "50", class: "text-pas" %>
   </div>
 
   <div class="field botton-b">
