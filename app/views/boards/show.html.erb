@@ -4,6 +4,7 @@
   </div>
   <div class="row">
     <div class="col-xs-12 text-center">
+
   	  <div class="col-xs-8 board-main">
         <div class="col-xs-4 text-center">
   	      <%= link_to user_path(@board.user.id) do %>
@@ -11,33 +12,34 @@
           <% end %>
           <p class="botton-b"><%= link_to @board.user.nickname, user_path(@board.user.id)  %> さん</p>
           <% if @board.user.id == current_user.id %>
-            <%= link_to 'コメントを削除する', board_path(@board.id), class: "btn-sm btn-danger image-tag", method: :delete,"data-confirm" => "本当に削除しますか?" %>
+            <%= link_to '質問を削除する', board_path(@board.id), class: "btn-sm btn-danger image-tag", method: :delete,"data-confirm" => "本当に削除しますか?" %>
           <% end %>
         </div>
         <div class="col-xs-8">
           <label class="col-sm-12 my-top bord-con"><strong><%= @board.title %></strong></label>
           <label class="col-sm-12 my-top"><%= @board.content %></label>
         </div>
+        <div class="col-xs-12 board-comment-box">
+          <div class="col-xs-12 comment-t text-center">
+            <h4>コメント一覧</h4>
+          </div>
+          <div id="comments_area_<%= @board.id %>">
+            <%= render partial: 'board_comments/comment', locals: { board: @board } %>
+          </div>
+        </div>
       </div>
+
       <div class="col-xs-4">
+        <div class="col-sm-12 board-status-box text-center">
+          <div class="board-status"></div>
+          <h4 class="board-status-main"><strong>コメントについて</strong></h4>
+          <p class="board-status-text">コメントの内容によって、「trees」の咲き具合が、変化します。「trees」の咲き具合が、満開になれば、Good!!</p>
+        </div>
         <div class="comment-form">
           <%= render partial: 'board_comments/comment_form', locals: { board: @board, board_comment: @board_comment} %>
         </div>
       </div>
+
     </div>
   </div>
-
-  <!-- コメント一覧非同期 -->
-  <div class="row">
-  	<div class="col-xs-8">
-      <div class="col-xs-12 comment-t text-center">
-        <h4>コメント一覧</h4>
-      </div>
-  		<div id="comments_area">
-  		  <%= render partial: 'board_comments/comment', locals: {board_comments: @board.board_comments} %>
-  		</div>
-  	</div>
-  </div>
-
-
 </div>

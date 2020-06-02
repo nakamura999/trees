@@ -16,11 +16,9 @@
                 <p class="comment-count">コメント件数: <%= f.board_comments.count %></p>
               </td>
               <td>
-              	<%= link_to board_path(f.id) do %>
-            	  <p class="board-title"><%= f.title %></p>
-            	<% end %>
-              </td>
-              <td>
+                <%= link_to board_path(f.id) do %>
+                  <p class="board-title"><%= f.title %></p>
+                <% end %>
                 <%= f.content %>
               </td>
             </tr>
@@ -35,10 +33,10 @@
   	<%= form_for @board do |f| %>
       <div class="col-xs-12 text-center">
         <label class="col-sm-12 text-style">質問タイトル</label>
-        <div class="col-sm-12"><%= f.text_field :title, class: "my-edit" %></div>
+        <div class="col-sm-12"><%= f.text_field :title, placeholder: "30文字以内", class: "my-edit" %></div>
 
-        <label class="col-sm-12 text-style">内容(200文字以内)</label>
-        <div class="col-sm-12"><%= f.text_area :content, class: "my-edit" %></div>
+        <label class="col-sm-12 text-style">内容</label>
+        <div class="col-sm-12"><%= f.text_area :content, placeholder: "200文字以内", class: "my-edit board-comment-form" %></div>
       </div>
       <div class="col-sm-12 text-right">
         <%= f.submit "質問追加", class: "btn btn-danger image-tag" %>

@@ -1,6 +1,2 @@
-document.addEventListener("turbolinks:load", function() {
-
-$("#comments_area"),html("<%= j(render 'comment', { board_comment: @board.board_comments}) %>");
+$("#comments_area_<%= @board.id %>"),html("<%= j(render 'board_comments/comment', { board: @board}) %>");
 $("textarea").val('')
-
-})

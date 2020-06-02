@@ -589,7 +589,6 @@ background-image: image-url("mains-image4.jpg");
   box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
   padding: 20px;
   margin-bottom: 50px;
-  border-radius: 35px;
   border: 1px dashed white;
   background-color: #252525;
   color: #e3e3e3;
@@ -599,7 +598,7 @@ background-image: image-url("mains-image4.jpg");
 }
 .board-table {
   margin-bottom: 20px;
-  border-bottom: 3px solid blue;
+  border-bottom: 2px dashed #969696;
 }
 .my-styles-board {
   width: 100%;
@@ -625,12 +624,74 @@ background-image: image-url("mains-image4.jpg");
   margin-bottom: 30px;
   border-radius: 20px;
 }
-
+.board-comment-box {
+  border: 1px dashed white;
+  padding: 10px;
+  margin-top: 40px;
+}
+.board-status-box {
+  background-color: #252525;
+  color: white;
+  box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
+  height: 250px;
+  border: 1px dashed white;
+  margin-bottom: 20px;
+}
+.board-status {
+  background-image: image-url("trees-image-n.jpg");
+  background-size: cover;
+  height: 100px;
+  width: 120px;
+  margin: 10px auto;
+}
+.board-status-main {
+  border-bottom: 2px solid #969696;
+}
+.board-status-text {
+  padding: 0 20px;
+}
+.board-status-image {
+  background-image: image-url("trees-image-m.jpg");
+  background-size: cover;
+  width: 75px;
+  height: 60px;
+  border-radius: 40px;
+  box-shadow: 1px 8px 12px rgba(255,255,255,0.8);
+}
+.board-status-image2 {
+  background-image: image-url("trees-image-pa23.jpg");
+  background-size: cover;
+  width: 75px;
+  height: 60px;
+  border-radius: 40px;
+  box-shadow: 1px 8px 12px rgba(255,255,255,0.6);
+}
+.board-status-image3 {
+  background-image: image-url("trees-image-p2.jpg");
+  background-size: cover;
+  width: 75px;
+  height: 60px;
+  border-radius: 40px;
+  box-shadow: 1px 8px 12px rgba(255,255,255,0.4);
+}
+.board-status-image4 {
+  background-image: image-url("trees-image-n.jpg");
+  background-size: cover;
+  width: 75px;
+  height: 60px;
+  border-radius: 40px;
+  box-shadow: 1px 8px 12px rgba(255,255,255,0.1);
+}
 .follow-no-image {
   width: 70px;
   height: 70px;
 }
+.board-comment-form {
+  height: 200px;
+  width: 100%;
+}
 
+// チャット
 .chat {
   background-color: #969696;
 }

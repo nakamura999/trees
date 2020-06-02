@@ -1,4 +1,4 @@
-<% board_comments.each do |board_comment| %>
+<% board.board_comments.each do |board_comment| %>
   <table class="col-xs-12 board-table">
     <tbody>
       <tr>
@@ -14,8 +14,20 @@
           <%= link_to "Destroy", board_board_comments_path(board_comment.id), class: "btn-sm btn-danger", method: :delete, remote: true %>
           <% end %>
         </td>
-        <td class="col-xs-9">
+        <td class="col-xs-8">
           <%= board_comment.comment %>
+          <!-- コメント -->
+        </td>
+        <td class="col-xs-2">
+          <% if board_comment&.score >= 0.5 %>
+            <div class="board-status-image"></div>
+          <% elsif board_comment&.score >= 0.1 %>
+            <div class="board-status-image2"></div>
+          <% elsif board_comment&.score >= -0.3 %>
+            <div class="board-status-image3"></div>
+          <% else %>
+            <div class="board-status-image4"></div>
+          <% end %>
           <!-- コメント -->
         </td>
       </tr>
