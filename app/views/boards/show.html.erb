@@ -11,6 +11,7 @@
             <%= attachment_image_tag @board.user, :profile_image, :fill, 250, 300, fallback: "no_image.jpg", class: "profile-image-board botton-b" %><br>
           <% end %>
           <p class="botton-b"><%= link_to @board.user.nickname, user_path(@board.user.id)  %> さん</p>
+          <p class="comment-count"><%= @board.created_at.to_s(:datetime_jp) %></p>
           <% if @board.user.id == current_user.id %>
             <%= link_to '質問を削除する', board_path(@board.id), class: "btn-sm btn-danger image-tag", method: :delete,"data-confirm" => "本当に削除しますか?" %>
           <% end %>

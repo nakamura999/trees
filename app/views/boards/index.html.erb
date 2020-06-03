@@ -14,6 +14,7 @@
                   <%= attachment_image_tag f.user, :profile_image, :fill, 250, 300, fallback: "no_image.jpg", class: "profile-image-board" %><br>
                 <% end %>
                 <p class="comment-count">コメント件数: <%= f.board_comments.count %></p>
+                <p class="comment-count"><%= f.created_at.to_s(:datetime_jp) %></p>
               </td>
               <td>
                 <%= link_to board_path(f.id) do %>
