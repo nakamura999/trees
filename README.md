@@ -1,6 +1,6 @@
 ![main-title](app/assets/images/trees-main-title.jpg)
 
-![main](app/assets/images/trees-main-top2.jpg)
+![main](app/assets/images/trees-main-top3.jpg)
 
 ## サイトURL
 - http://54.248.14.173/
