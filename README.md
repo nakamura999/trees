@@ -63,7 +63,7 @@ Mysql
 ![main-styles](app/assets/images/trees-main-styles.jpg)
 
 ### 管理者側
-- アクティビティをチェックできるダッシュボード(グラフにchartkick使用)
+- アクティビティをチェックできるダッシュボード(グラフにchartkick・groupdate使用)
 - 会員の一覧・会員の削除
 - ジャンルの追加・編集
 - 下記管理者側top画面
