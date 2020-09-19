@@ -1,9 +1,12 @@
 class StylesController < ApplicationController
   before_action :authenticate_user!, only:[:new, :edit, :create, :update, :destroy]
 
+  layout 'styletops'
+
   def index
     @jenres = Jenre.all
     @tags = ActsAsTaggableOn::Tag.all
+    @rank = Style.find(Favorite.group(:style_id).order('count(style_id) desc').limit(3).pluck(:style_id))
     # if params[:tag]
     #   @styles = Style.tagged_with(params[:tag])
     # elsif params[:status] == "MENS"

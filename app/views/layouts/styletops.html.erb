@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Trees</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag('trees-fa.png') %>
+  </head>
+
+  <body>
+
+    <div id="wrapper">
+      <header id="top">
+        <div class="navbar nav-center">
+          <div class="container">
+            <div class="nav">
+              <%= link_to root_path do %>
+                <img class="top-logo">
+              <% end %>
+              <div class="hamburger" id="open_nav">
+                <div class="effect-float">
+                  <a>
+                    <figure>
+                      <img class="toriger">
+                    </figure>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="container-fluid">
+        <% flash.each do |message_type, message| %>
+          <% if flash[:notice] %>
+            <div class="alert alert-warning">
+              <%= message %>
+            </div>
+          <% end %>
+        <% end %>
+        <%= yield %>
+      </div>
+
+      <footer>
+        <div class="container">
+          <ul class="footer-menu">
+            <li>
+              <%= link_to 'Contact', root_path, class: "link-text" %>
+            </li>
+            <li>｜</li>
+            <li>
+              <%= link_to 'Admin', new_admin_session_path, class: "link-text" %>
+            </li>
+          </ul>
+          <p class="footer-text">©trees  
+            <a href="#top">
+              <img class="top-top">
+            </a>
+          </p>
+        </div>
+      </footer>
+    </div>
+      <nav id="naver">
+        <div class="logo">
+          <img class="logo-triger">
+        </div>
+        <ul>
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to 'My Page', user_path(current_user), class: "link-text" %>
+            </li>
+            <li>
+              <%= link_to 'Style List', styles_path, class: "link-text" %>
+            </li>
+            <li>
+              <%= link_to '掲示板', boards_path, class: "link-text" %>
+            </li>
+            <% if current_user.status == "美容師" %>
+              <li>
+                <%= link_to 'Style 新規作成', new_style_path, class: "link-text" %>
+              </li>
+            <% end %>
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link-text" %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to 'Log in', new_user_session_path, class: "link-text" %>
+            </li>
+            <li>
+              <%= link_to 'Sign in', new_user_registration_path, class: "link-text" %>
+            </li>
+            <li>
+              <%= link_to 'Style List', styles_path, class: "link-text" %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+
+  </body>
+</html>

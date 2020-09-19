@@ -6,6 +6,7 @@ class Admins::TopAdminController < ApplicationController
   def index
   	@users = User.all
   	@users_count = User.group_by_day(:created_at).size
+    # @users_count = User.group_by_month(:created_at).size
   	@styles = Style.all
   	@styles_count = Style.group_by_day(:created_at).size
   	@boards = Board.all
