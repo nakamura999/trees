@@ -10,17 +10,17 @@ class StylesController < ApplicationController
       @styles = Style.tagged_with(params[:tag])
     elsif params[:status] == "MENS"
       @styles = Style.where(status: "MENS").order("RANDOM()").all
-      @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "MENS").order('count(style_id) desc').limit(3)
+      @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "MENS").order('count(style_id) desc').limit(5)
     elsif params[:status] == "LADIES"
       @styles = Style.where(status: "LADIES").order("RANDOM()").all
-      @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "LADIES").order('count(style_id) desc').limit(3)
+      @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "LADIES").order('count(style_id) desc').limit(5)
     elsif params[:jenre_id]
       @jenre = Jenre.find(params[:jenre_id])
       @styles = @jenre.styles.order("RANDOM()").all
-      @rank = Style.find(Favorite.group(:style_id).order('count(style_id) desc').limit(3).pluck(:style_id))
+      @rank = Style.joins(:favorites).group("favorites.style_id").where(jenre_id: @jenre.id).order('count(style_id) desc').limit(5)
     else
       @styles = Style.order("RANDOM()").all
-      @rank = Style.find(Favorite.group(:style_id).order('count(style_id) desc').limit(3).pluck(:style_id))
+      @rank = Style.find(Favorite.group(:style_id).order('count(style_id) desc').limit(5).pluck(:style_id))
     end
     # Mysql用(本番環境)
     # if params[:tag]
