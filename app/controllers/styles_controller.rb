@@ -27,14 +27,14 @@ class StylesController < ApplicationController
     #   @styles = Style.tagged_with(params[:tag])
     # elsif params[:status] == "MENS"
     #   @styles = Style.where(status: "MENS").order("RAND()").all
-    #   @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "MENS").order('count(style_id) desc').limit(3)
+    #   @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "MENS").order('count(style_id) desc').limit(5)
     # elsif params[:status] == "LADIES"
     #   @styles = Style.where(status: "LADIES").order("RAND()").all
-    #   @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "LADIES").order('count(style_id) desc').limit(3)
+    #   @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "LADIES").order('count(style_id) desc').limit(5)
     # elsif params[:jenre_id]
     #   @jenre = Jenre.find(params[:jenre_id])
     #   @styles = @jenre.styles.order("RAND()").all
-    #   @rank = Style.find(Favorite.group(:style_id).order('count(style_id) desc').limit(3).pluck(:style_id))
+    #   @rank = Style.joins(:favorites).group("favorites.style_id").where(jenre_id: @jenre.id).order('count(style_id) desc').limit(5)
     # else
     #   @styles = Style.order("RAND()").all
     #   @rank = Style.find(Favorite.group(:style_id).order('count(style_id) desc').limit(3).pluck(:style_id))
