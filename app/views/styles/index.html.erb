@@ -37,19 +37,24 @@
       <h2 class="main-tex2"><strong>R a n k i n g</strong></h2>
     </div>
     <div class="col-xs-12 text-center">
-        <% @rank.each do |style| %>
-              <%= link_to style_path(style.id) do %>
-                <%= attachment_image_tag style, :image, :fill, 200, 250, format: 'jpeg', class: "style-image" %>
-              <% end %>
+      <div class="ranking-box center-block">
+        <% @rank.each_with_index do |style, i| %>
+          <div class="box-efect boxes text-center">
+            <%= i+1 %>
+            <%= link_to style_path(style.id) do %>
+              <%= attachment_image_tag style, :image, :fill, 150, 200, format: 'jpeg' %>
+            <% end %>
+          </div>
         <% end %>
+      </div>
     </div>
     <div class="col-xs-12 text-center">
       <h2 class="main-tex2"><strong>S t y l e s</strong></h2>
     </div>
-    <div class="row">
-      <div class="my-styles2">
-        <div class="col-xs-12">
-          <% @styles.each do |style| %>
+    <div class="my-styles2">
+      <div class="col-xs-12 text-center">
+        <div class="styles-box center-block">
+        <% @styles.each do |style| %>
             <div class="box-efect">
               <%= link_to style_path(style.id) do %>
                 <%= attachment_image_tag style, :image, :fill, 200, 250, format: 'jpeg', class: "style-image" %>
