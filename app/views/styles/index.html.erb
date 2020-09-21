@@ -2,6 +2,10 @@
 <div class="row">
   <div class="col-xs-2 index-status">
 
+      <% if user_signed_in? %>
+          <h5 class="text-center welcome-text">ようこそ <strong><%= current_user.nickname %></strong> さん</h5>
+      <% end %>
+
   	  <div class="col-xs-12 text-center index-top">
   	  	 <%= link_to styles_path(status: "MENS") do %>
   	       <img class="image-box-index">
