@@ -40,7 +40,15 @@
       <div class="ranking-box center-block">
         <% @rank.each_with_index do |style, i| %>
           <div class="box-efect boxes text-center">
-            <%= i+1 %>
+            <% if i == 0 %>
+                <div class="crown-image1 center-block"><h3 class="crown-text"><%= i+1 %></h3></div>
+              <% elsif i == 1 %>
+                <div class="crown-image2 center-block"><h3 class="crown-text"><%= i+1 %></h3></div>
+              <% elsif i == 2 %>
+                <div class="crown-image3 center-block"><h3 class="crown-text"><%= i+1 %></h3></div>
+              <% else %>
+                <div class="crown-image center-block"><h3 class="crown-text"><%= i+1 %></h3></div>
+            <% end %>
             <%= link_to style_path(style.id) do %>
               <%= attachment_image_tag style, :image, :fill, 150, 200, format: 'jpeg' %>
             <% end %>

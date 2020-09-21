@@ -26,6 +26,7 @@ class StylesController < ApplicationController
     # Mysql用(本番環境)
     # if params[:tag]
     #   @styles = Style.tagged_with(params[:tag])
+    #   @rank = Style.joins(:favorites).group("favorites.style_id").where(id: @styles).order('count(style_id) desc').limit(5)
     # elsif params[:status] == "MENS"
     #   @styles = Style.where(status: "MENS").order("RAND()").all
     #   @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "MENS").order('count(style_id) desc').limit(5)

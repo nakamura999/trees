@@ -22,3 +22,44 @@ max-width: 100%;
 	float: left;
 	margin: 0 20px;
 }
+
+.crown-image {
+	background: image-url("crown4.png");
+	width: 40px;
+	height: 40px;
+	background-size: cover;
+}
+
+.crown-image1 {
+	background: image-url("crown1.png");
+	width: 40px;
+	height: 40px;
+	background-size: cover;
+}
+
+.crown-image2 {
+	background: image-url("crown2.png");
+	width: 40px;
+	height: 40px;
+	background-size: cover;
+}
+
+.crown-image3 {
+	background: image-url("crown3.png");
+	width: 40px;
+	height: 40px;
+	background-size: cover;
+}
+
+.crown-text {
+	color: white;
+	text-shadow:
+       2px  2px 1px #003366,
+      -2px  2px 1px #003366,
+       2px -2px 1px #003366,
+      -2px -2px 1px #003366,
+       2px  0px 1px #003366,
+       0px  2px 1px #003366,
+      -2px  0px 1px #003366,
+       0px -2px 1px #003366;
+}
