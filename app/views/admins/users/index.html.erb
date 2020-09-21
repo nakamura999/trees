@@ -1,12 +1,12 @@
 <div class="row main-back">
   <div class="col-xs-12 text-center search-user">
-    <h5><strong>User検索(ニックネーム)</strong></h5>  
-      <%= form_tag(admins_users_path, :method => "get") do %>  
-        <p>  
-          <%= text_field_tag :search, params[:search] %>  
-          <%= submit_tag "検索", :nickname => nil %>  
-        </p>  
-      <% end %> 
+    <h5><strong>User検索(ニックネーム)</strong></h5>
+      <%= form_tag(admins_users_path, :method => "get") do %>
+        <p>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "検索", :nickname => nil %>
+        </p>
+      <% end %>
   </div>
   <div class="col-xs-12 text-center admin-user-main">
     <h3><strong class="user-main-text">会員一覧</strong></h3><br>

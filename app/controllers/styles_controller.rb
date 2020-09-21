@@ -19,6 +19,9 @@ class StylesController < ApplicationController
       @jenre = Jenre.find(params[:jenre_id])
       @styles = @jenre.styles.order("RANDOM()").all
       @rank = Style.joins(:favorites).group("favorites.style_id").where(jenre_id: @jenre.id).order('count(style_id) desc').limit(5)
+    elsif params[:search]
+      @styles = Style.search(params[:search])
+      @rank = Style.joins(:favorites).group("favorites.style_id").where(id: @styles).order('count(style_id) desc').limit(5)
     else
       @styles = Style.order("RANDOM()").all
       @rank = Style.find(Favorite.group(:style_id).order('count(style_id) desc').limit(5).pluck(:style_id))
@@ -37,6 +40,9 @@ class StylesController < ApplicationController
     #   @jenre = Jenre.find(params[:jenre_id])
     #   @styles = @jenre.styles.order("RAND()").all
     #   @rank = Style.joins(:favorites).group("favorites.style_id").where(jenre_id: @jenre.id).order('count(style_id) desc').limit(5)
+    # elsif params[:search]
+    #   @styles = Style.search(params[:search])
+    #   @rank = Style.joins(:favorites).group("favorites.style_id").where(id: @styles).order('count(style_id) desc').limit(5)
     # else
     #   @styles = Style.order("RAND()").all
     #   @rank = Style.find(Favorite.group(:style_id).order('count(style_id) desc').limit(3).pluck(:style_id))

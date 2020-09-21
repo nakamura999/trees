@@ -21,4 +21,8 @@ class Style < ApplicationRecord
 
     enum status: { MENS: 0, LADIES: 1 }
 
+    def self.search(search)
+       Style.joins(:user).where(['prefectures LIKE ? OR nickname LIKE ?', "%#{search}%", "%#{search}%"])
+    end
+
 end
