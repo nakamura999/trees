@@ -65,7 +65,11 @@ max-width: 100%;
 }
 
 .text-serch {
-	color: white;
+	color: #e3e3e3;
+	border-bottom: 1px dashed white;
+	background-color: #FF6633;
+	border-radius: 20px;
+	padding: 5px;
 }
 
 .search-style {
@@ -74,6 +78,16 @@ max-width: 100%;
 }
 
 .welcome-text {
-	color: white;
+	color: #e3e3e3;
 	border-bottom: 1px dashed white;
+}
+
+.board_new_text {
+	color: #e3e3e3;
+	padding: 5px;
+}
+
+.bord-new-box {
+	margin: 5px auto;
+	border-bottom: 1px dashed #FF6633;
 }
