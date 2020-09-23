@@ -37,7 +37,7 @@
         <h5 class="text-serch"><strong>スタイリスト<br>&<br>都道府県</strong></h5>
         <%= form_tag(styles_path, :method => "get") do %>
           <p>
-            <%= text_field_tag :search, params[:search] %>
+            <%= text_field_tag :search, params[:search], placeholder: "東京都" %>
             <%= submit_tag "検索", :nickname => nil %>
           </p>
         <% end %>
@@ -49,6 +49,7 @@
                 <strong class="board_new_text"><%= i+1 %>. </strong><%= link_to board.title.truncate(20), board_path(board.id), class: "board_new_text" %><br>
               </div>
             <% end %>
+            <p><%= link_to "掲示板へ", boards_path, class: "board_new_text" %></p>
       </div>
       <div class="col-xs-12 text-center">
         <h5 class="text-serch"><strong>新着スタイル</strong></h5>
