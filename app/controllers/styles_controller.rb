@@ -7,6 +7,7 @@ class StylesController < ApplicationController
     @jenres = Jenre.all
     @tags = ActsAsTaggableOn::Tag.all
     @boards_new = Board.limit(5).order("created_at desc")
+    @styels_new = Style.limit(12).order("created_at desc")
     if params[:tag]
       @styles = Style.tagged_with(params[:tag])
       @rank = Style.joins(:favorites).group("favorites.style_id").where(id: @styles).order('count(style_id) desc').limit(5)

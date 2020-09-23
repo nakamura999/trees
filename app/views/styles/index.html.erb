@@ -50,6 +50,18 @@
               </div>
             <% end %>
       </div>
+      <div class="col-xs-12 text-center">
+        <h5 class="text-serch"><strong>新着スタイル</strong></h5>
+        <div class="styles-box center-block">
+          <% @styels_new.each do |style| %>
+            <div class="box-efect">
+              <%= link_to style_path(style.id) do %>
+                <%= attachment_image_tag style, :image, :fill, 50, 80, format: 'jpeg', class: "style-image" %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
   </div>
 
   <!-- スタイル一覧 -->
