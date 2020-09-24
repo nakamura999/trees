@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
+  layout 'styletops'
+
   def show
     @user = User.find(params[:id])
     @user_salons = @user.salons
@@ -12,6 +14,12 @@ class UsersController < ApplicationController
     # 自分のルーム一覧
     targetRoomIdList = UserRoom.select(:room_id).where(user_id: @user.id)
     @rooms = Room.where(id: targetRoomIdList)
+
+    # サイドバー
+    @jenres = Jenre.all
+    @tags = ActsAsTaggableOn::Tag.all
+    @boards_new = Board.limit(5).order("created_at desc")
+    @styels_new = Style.limit(12).order("created_at desc")
 
     if @user.id == current_user.id
     else
