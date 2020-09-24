@@ -16,7 +16,7 @@ devise_for :users, controllers: {
 
   root 'homes#top'
   get 'homes/top'
-  
+
   get 'users/passwords/:id', to:"users#passwords", as: :passwords
   patch '/users/passwords/:id' ,to: "users#pass_update"
   put   '/users/passwords/:id' ,to: "users#pass_update"

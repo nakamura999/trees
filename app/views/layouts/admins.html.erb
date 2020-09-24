@@ -49,14 +49,30 @@
         <div class="container">
           <ul class="footer-menu">
             <li>
-              <%= link_to 'Contact', root_path, class: "link-text" %>
+              <%= link_to 'トップページ', root_path, class: "link-text" %>
+            </li>
+            <li>｜</li>
+            <li>
+              <%= link_to 'ヘアカタログ', styles_path, class: "link-text" %>
+            </li>
+            <li>｜</li>
+            <li>
+              <%= link_to 'ジャンル一覧', admins_jenres_path, class: "link-text" %>
+            </li>
+            <li>｜</li>
+            <li>
+              <%= link_to '会員一覧', admins_users_path, class: "link-text" %>
+            </li>
+            <li>｜</li>
+            <li>
+              <%= link_to '問い合わせ', "/#contact", class: "link-text" %>
             </li>
             <li>｜</li>
             <li>
               <%= link_to 'Admin', new_admin_session_path, class: "link-text" %>
             </li>
           </ul>
-          <p class="footer-text">©trees  
+          <p class="footer-text">©trees
             <a href="#top">
               <img class="top-top">
             </a>
