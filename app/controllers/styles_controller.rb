@@ -64,7 +64,6 @@ class StylesController < ApplicationController
     @style = Style.new
     @tags = ActsAsTaggableOn::Tag.all
     @jenres = Jenre.all
-    @tags = ActsAsTaggableOn::Tag.all
     @boards_new = Board.limit(5).order("created_at desc")
     @styels_new = Style.limit(12).order("created_at desc")
   end
@@ -72,6 +71,9 @@ class StylesController < ApplicationController
   def edit
     @style = Style.find(params[:id])
     @tags = ActsAsTaggableOn::Tag.all
+    @jenres = Jenre.all
+    @boards_new = Board.limit(5).order("created_at desc")
+    @styels_new = Style.limit(12).order("created_at desc")
     if @style.user_id != current_user.id
       redirect_back(fallback_location: root_path)
     end

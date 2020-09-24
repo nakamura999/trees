@@ -65,8 +65,10 @@
             <label class="col-sm-12 text-style">タグ</label>
             <div class="col-sm-12">
               <% @tags.each do |tag| %>
-                <%= f.check_box :tag_list, { multiple: true }, "#{tag.name}", nil %>
-                <%= f.label " #{tag.name}(#{tag.taggings_count})", class: "label label-default" %>
+                <div class="tag-box">
+                  <%= f.check_box :tag_list, { multiple: true }, "#{tag.name}", nil %>
+                  <%= f.label " #{tag.name}(#{tag.taggings_count})", class: "label label-default" %>
+                </div>
               <% end %>
             </div>
 
