@@ -1,75 +1,81 @@
 <div class="row">
-  <div class="col-xs-12 text-center">
-      <h2 class="main-tex"><strong>Style 新規登録画面</strong></h2>
-  </div>
-</div>
 
-<%= form_for @style do |f| %>
-<%= render 'layouts/error_messages', model: f.object %>
-<div class="row">
-  <div class="row">
+  <div class="col-xs-2 index-status">
+    <%= render 'layouts/sidebar', jenres: @jenres, tags: @tags, boards_new: @boards_new, styels_new: @styels_new %>
+  </div>
+
+  <div class="col-xs-10">
     <div class="col-xs-12 text-center">
-      <div class="col-xs-12">
-        <p class="style-main"><strong>スタイルイメージ</strong></p>
-      </div>
-      <div class="row">
-        <div class="col-xs-4">
-          <%= attachment_image_tag @style, :image, fallback: "no_image.jpg", id: :img_prev, class: "profile-image stylei" %><br>
-          <%= f.attachment_field :image, class: "btn btn-danger image-tag_style", id: :user_img %>
-          <p><strong>メインイメージ</strong></p>
-        </div>
-        <div class="col-xs-4">
-          <%= attachment_image_tag @style, :image_second, fallback: "no_image.jpg", id: :img_two, class: "profile-image stylei" %><br>
-          <%= f.attachment_field :image_second, class: "btn btn-danger image-tag_style", id: :style_two %>
-          <p><strong>サブイメージ</strong></p>
-        </div>
-        <div class="col-xs-4">
-          <%= attachment_image_tag @style, :image_third, fallback: "no_image.jpg", id: :img_three, class: "profile-image stylei" %><br>
-          <%= f.attachment_field :image_third, class: "btn btn-danger image-tag_style", id: :style_three %>
-          <p><strong>サブイメージ</strong></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row bottom-box">
-    <div class="col-xs-6">
-      <label class="col-sm-12 text-style">スタイル名</label>
-      <div class="col-sm-12"><%= f.text_field :name, placeholder: "20文字以内", class: "my-edit" %></div>
-
-      <label class="col-sm-12 text-style">性別</label>
-      <div class="col-sm-12"><%= f.select :status, ['MENS', 'LADIES'] %></div>
-
-      <label class="col-sm-12 text-style">スタイルPR</label>
-      <div class="col-sm-12"><%= f.text_area :content, placeholder: "100文字以内", class: "my-edit" %></div>
-
-      <label class="col-sm-12 text-style">ジャンル</label>
-      <div class="col-sm-12"><%= f.select :jenre_id, Jenre.all.collect{ |j| [ j.name, j.id]} %></div>
-
-      <label class="col-sm-12 text-style">メニュー</label>
-      <div class="col-sm-12"><%= f.text_field :menu, placeholder: "カット・カラー：25文字以内", class: "my-edit" %></div>
-
-      <label class="col-sm-12 text-style">カラー</label>
-      <label class="col-sm-12 text-style-mini">(カラー無しの場合は、「ノーカラー」とご記入ください)</label>
-      <div class="col-sm-12"><%= f.text_field :color_style, placeholder: "ノーカラー：20文字以内", class: "my-edit" %></div>
-
-      <label class="col-sm-12 text-style">料金(税込)</label>
-      <label class="col-sm-12 text-style-mini">(「¥」,「,」無し数字のみ、例、12000)</label>
-      <div class="col-sm-12"><%= f.text_field :price, placeholder: "10000：10文字以内", class: "my-edit" %></div>
+      <h2 class="main-tex"><strong>Style 新規登録画面</strong></h2>
     </div>
 
-    <div class="col-xs-6">
-      <label class="col-sm-12 text-style">タグ</label>
-      <div class="col-sm-12">
-        <% @tags.each do |tag| %>
-          <%= f.check_box :tag_list, { multiple: true }, "#{tag.name}", nil %>
-          <%= f.label " #{tag.name}(#{tag.taggings_count})", class: "label label-default" %>
-        <% end %>
-      </div>
+    <%= form_for @style do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <div class="col-xs-12">
+              <p class="style-main"><strong>スタイルイメージ</strong></p>
+            </div>
+            <div class="row">
+              <div class="col-xs-4">
+                <%= attachment_image_tag @style, :image, fallback: "no_image.jpg", id: :img_prev, class: "profile-image stylei" %><br>
+                <%= f.attachment_field :image, class: "btn btn-danger image-tag_style", id: :user_img %>
+                <p><strong>メインイメージ</strong></p>
+              </div>
+              <div class="col-xs-4">
+                <%= attachment_image_tag @style, :image_second, fallback: "no_image.jpg", id: :img_two, class: "profile-image stylei" %><br>
+                <%= f.attachment_field :image_second, class: "btn btn-danger image-tag_style", id: :style_two %>
+                <p><strong>サブイメージ</strong></p>
+              </div>
+              <div class="col-xs-4">
+                <%= attachment_image_tag @style, :image_third, fallback: "no_image.jpg", id: :img_three, class: "profile-image stylei" %><br>
+                <%= f.attachment_field :image_third, class: "btn btn-danger image-tag_style", id: :style_three %>
+                <p><strong>サブイメージ</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row bottom-box">
+          <div class="col-xs-6">
+            <label class="col-sm-12 text-style">スタイル名</label>
+            <div class="col-sm-12"><%= f.text_field :name, placeholder: "20文字以内", class: "my-edit" %></div>
 
-      <div class="col-sm-12 text-right">
-        <%= f.submit "新規作成", class: "btn btn-danger image-tag" %>
+            <label class="col-sm-12 text-style">性別</label>
+            <div class="col-sm-12"><%= f.select :status, ['MENS', 'LADIES'] %></div>
+
+            <label class="col-sm-12 text-style">スタイルPR</label>
+            <div class="col-sm-12"><%= f.text_area :content, placeholder: "100文字以内", class: "my-edit" %></div>
+
+            <label class="col-sm-12 text-style">ジャンル</label>
+            <div class="col-sm-12"><%= f.select :jenre_id, Jenre.all.collect{ |j| [ j.name, j.id]} %></div>
+
+            <label class="col-sm-12 text-style">メニュー</label>
+            <div class="col-sm-12"><%= f.text_field :menu, placeholder: "カット・カラー：25文字以内", class: "my-edit" %></div>
+
+            <label class="col-sm-12 text-style">カラー</label>
+            <label class="col-sm-12 text-style-mini">(カラー無しの場合は、「ノーカラー」とご記入ください)</label>
+            <div class="col-sm-12"><%= f.text_field :color_style, placeholder: "ノーカラー：20文字以内", class: "my-edit" %></div>
+
+            <label class="col-sm-12 text-style">料金(税込)</label>
+            <label class="col-sm-12 text-style-mini">(「¥」,「,」無し数字のみ、例、12000)</label>
+            <div class="col-sm-12"><%= f.text_field :price, placeholder: "10000：10文字以内", class: "my-edit" %></div>
+          </div>
+
+          <div class="col-xs-6">
+            <label class="col-sm-12 text-style">タグ</label>
+            <div class="col-sm-12">
+              <% @tags.each do |tag| %>
+                <%= f.check_box :tag_list, { multiple: true }, "#{tag.name}", nil %>
+                <%= f.label " #{tag.name}(#{tag.taggings_count})", class: "label label-default" %>
+              <% end %>
+            </div>
+
+            <div class="col-sm-12 text-right">
+              <%= f.submit "新規作成", class: "btn btn-danger image-tag" %>
+            </div>
+          </div>
+        </div>
       </div>
-   </div>
+    <% end %>
   </div>
 </div>
-<% end %>

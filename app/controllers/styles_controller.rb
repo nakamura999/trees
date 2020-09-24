@@ -54,11 +54,19 @@ class StylesController < ApplicationController
   def show
     @style = Style.find(params[:id])
     @user_styles = @style.user.styles
+    @jenres = Jenre.all
+    @tags = ActsAsTaggableOn::Tag.all
+    @boards_new = Board.limit(5).order("created_at desc")
+    @styels_new = Style.limit(12).order("created_at desc")
   end
 
   def new
     @style = Style.new
     @tags = ActsAsTaggableOn::Tag.all
+    @jenres = Jenre.all
+    @tags = ActsAsTaggableOn::Tag.all
+    @boards_new = Board.limit(5).order("created_at desc")
+    @styels_new = Style.limit(12).order("created_at desc")
   end
 
   def edit

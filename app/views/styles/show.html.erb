@@ -1,104 +1,112 @@
 <!-- Style詳細ページ -->
-<div class="row style-main-visual">
-  <div class="col-xs-12 text-center">
-      <h2 class="main-tex"><strong>Style Page</strong></h2>
+<div class="row">
+  <div class="col-xs-2 index-status">
+    <%= render 'layouts/sidebar', jenres: @jenres, tags: @tags, boards_new: @boards_new, styels_new: @styels_new %>
   </div>
 
-  <!-- styleイメージ javascript設定（imageList imageList__view imageList__thumbnail） -->
-  <div class="col-xs-6 text-center imageList">
-  	<div class="col-sm-12 imageList__view">
-  	  <%= attachment_image_tag @style, :image, :fill, 350, 450, fallback: "no_image.jpg", class: "profile-image-white" %>
-  	</div>
-    <div class="col-sm-12 my-top">
-     <div class="col-sm-1">
-     </div>
-     <div class="col-sm-3 imageList__thumbnail selected">
-      <%= attachment_image_tag @style, :image, :fill, 350, 450, fallback: "no_image.jpg", class: "profile-image-white" %>
-     </div>
-     <div class="col-sm-3 imageList__thumbnail">
-      <%= attachment_image_tag @style, :image_second, :fill, 350, 450, fallback: "no_image.jpg", class: "profile-image-white" %>
-     </div>
-     <div class="col-sm-3 imageList__thumbnail">
-      <%= attachment_image_tag @style, :image_third, :fill, 350, 450, fallback: "no_image.jpg", class: "profile-image-white imageList__thumbnail" %>
-     </div>
-    </div>
-  </div>
 
-  <div class="col-xs-6">
+  <div class="col-xs-10">
+    <div class="style-main-visual col-xs-12">
+      <div class="col-xs-12 text-center">
+        <h2 class="main-tex"><strong>Style Page</strong></h2>
+      </div>
 
-    <label class="col-sm-10 text-user my-style-main"><%= @style.name %>
-      <% if @style.user == current_user %>
-       <%= link_to '編集する', edit_style_path(@style.id), class: "btn-sm btn-danger image-tag" %>
-       <%= link_to '削除する', style_path(@style.id), class: "btn-sm btn-danger image-tag", method: :delete,"data-confirm" => "本当に削除しますか?" %>
-      <% end %>
-    </label>
-
-    <% if user_signed_in? %>
-      <label class="col-sm-10 text-user my-style-main text-right">
-        <!-- いいね機能【非同期】 -->
-        <div id="favorites_<%= @style.id %>">
-          <%= render 'favorites/favorites', style: @style %>
+      <!-- styleイメージ javascript設定（imageList imageList__view imageList__thumbnail） -->
+      <div class="col-xs-6 text-center imageList">
+  	    <div class="col-sm-12 imageList__view">
+  	      <%= attachment_image_tag @style, :image, :fill, 350, 450, fallback: "no_image.jpg", class: "profile-image-white" %>
+  	    </div>
+        <div class="col-sm-12 my-top">
+          <div class="col-sm-1">
+          </div>
+          <div class="col-sm-3 imageList__thumbnail selected">
+            <%= attachment_image_tag @style, :image, :fill, 350, 450, fallback: "no_image.jpg", class: "profile-image-white" %>
+          </div>
+          <div class="col-sm-3 imageList__thumbnail">
+            <%= attachment_image_tag @style, :image_second, :fill, 350, 450, fallback: "no_image.jpg", class: "profile-image-white" %>
+          </div>
+          <div class="col-sm-3 imageList__thumbnail">
+            <%= attachment_image_tag @style, :image_third, :fill, 350, 450, fallback: "no_image.jpg", class: "profile-image-white imageList__thumbnail" %>
+          </div>
         </div>
-      </label>
-    <% end %>
+      </div>
 
-    <label class="col-sm-10 my-top text-styles"><%= @style.content %></label>
+      <div class="col-xs-6">
 
-    <label class="col-sm-10 my-top"><%= @style.status %> | <%= @style.jenre.name %> | Color : <%= @style.color_style %></label>
+        <label class="col-sm-10 text-user my-style-main"><%= @style.name %>
+          <% if @style.user == current_user %>
+            <%= link_to '編集する', edit_style_path(@style.id), class: "btn-sm btn-danger image-tag" %>
+            <%= link_to '削除する', style_path(@style.id), class: "btn-sm btn-danger image-tag", method: :delete,"data-confirm" => "本当に削除しますか?" %>
+          <% end %>
+        </label>
 
-    <label class="col-sm-10 my-top"><%= @style.menu %> | ¥ <%= @style.price %></label>
-
-    <label class="col-sm-12 my-top">
-    	<%= raw(@style.tag_list.map { |t| link_to t, tag_path(t), class: "label label-default labb" }.join(' ')) %>
-    </label>
-
-    <label class="col-sm-10 text-style">Stylist</label>
-
-    <div class="col-xs-12 botton-b">
-      <div class="col-sm-3 text-center">
-      	<%= link_to user_path(@style.user.id) do %>
-          <%= attachment_image_tag @style.user, :profile_image, :fill, 80, 120, fallback: "no_image.jpg", class: "profile-image-white style-profile" %>
+        <% if user_signed_in? %>
+          <label class="col-sm-10 text-user my-style-main text-right">
+            <!-- いいね機能【非同期】 -->
+            <div id="favorites_<%= @style.id %>">
+              <%= render 'favorites/favorites', style: @style %>
+            </div>
+          </label>
         <% end %>
-      </div>
-      <label class="col-sm-8 my-top"><%= @style.user.nickname %><%= link_to 'StylistPage', user_path(@style.user.id), class: "btn-sm btn-danger image-tag stylistb" %></label>
 
-      <label class="col-sm-8 my-top style-userb"><%= @style.user.body %></label>
+        <label class="col-sm-10 my-top text-styles"><%= @style.content %></label>
 
-    </div>
+        <label class="col-sm-10 my-top"><%= @style.status %> | <%= @style.jenre.name %> | Color : <%= @style.color_style %></label>
 
-    <!-- myサロン一覧 -->
-    <% @style.user.salons.each do |f| %>
-      <div class="col-sm-12 text-styles botton-b">
-        <label class="col-sm-8 my-top style-userb"><%= f.salon_name %></label>
-        <label class="col-sm-8 my-top style-userb"><%= f.salon_address %></label>
-        <label class="col-sm-8 my-top style-userb"><%= f.salon_phone %></label>
-        <%= attachment_image_tag f, :salon_image, :fill, 120, 100, fallback: "no_image.jpg", class: "syadow" %>
-      </div>
-    <% end %>
+        <label class="col-sm-10 my-top"><%= @style.menu %> | ¥ <%= @style.price %></label>
 
-  </div>
-</div>
+        <label class="col-sm-12 my-top">
+    	    <%= raw(@style.tag_list.map { |t| link_to t, tag_path(t), class: "label label-default labb" }.join(' ')) %>
+        </label>
 
-<!-- myスタイル一覧 -->
-<div class="row style-main-visual">
+        <label class="col-sm-10 text-style">Stylist</label>
 
-  <div class="col-xs-12 text-center">
-      <h2 class="main-tex"><strong><%= @style.user.nickname %> styles</strong></h2>
-  </div>
-  <div class="row">
-    <div class="my-styles">
-      <div class="col-xs-12">
-        <% @user_styles.each do |f| %>
-          <div class="box box-efect">
-            <%= link_to style_path(f.id) do %>
-              <%= attachment_image_tag f, :image, :fill, 200, 250, format: 'jpeg', class: "style-image" %>
+        <div class="col-xs-12 botton-b">
+          <div class="col-sm-3 text-center">
+      	    <%= link_to user_path(@style.user.id) do %>
+              <%= attachment_image_tag @style.user, :profile_image, :fill, 80, 120, fallback: "no_image.jpg", class: "profile-image-white style-profile" %>
             <% end %>
           </div>
+          <label class="col-sm-8 my-top"><%= @style.user.nickname %><%= link_to 'StylistPage', user_path(@style.user.id), class: "btn-sm btn-danger image-tag stylistb" %></label>
+
+          <label class="col-sm-8 my-top style-userb"><%= @style.user.body %></label>
+
+        </div>
+
+        <!-- myサロン一覧 -->
+        <% @style.user.salons.each do |f| %>
+          <div class="col-sm-12 text-styles botton-b">
+            <label class="col-sm-8 my-top style-userb"><%= f.salon_name %></label>
+            <label class="col-sm-8 my-top style-userb"><%= f.salon_address %></label>
+            <label class="col-sm-8 my-top style-userb"><%= f.salon_phone %></label>
+            <%= attachment_image_tag f, :salon_image, :fill, 120, 100, fallback: "no_image.jpg", class: "syadow" %>
+          </div>
         <% end %>
-       </div>
+
+      </div>
+    </div>
+
+    <!-- myスタイル一覧 -->
+    <div class="row style-main-visual">
+
+      <div class="col-xs-12 text-center">
+        <h2 class="main-tex"><strong><%= @style.user.nickname %> styles</strong></h2>
+      </div>
+      <div class="row">
+        <div class="my-styles">
+          <div class="col-xs-12">
+            <% @user_styles.each do |f| %>
+              <div class="box box-efect">
+                <%= link_to style_path(f.id) do %>
+                  <%= attachment_image_tag f, :image, :fill, 200, 250, format: 'jpeg', class: "style-image" %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
 </div>
 
 

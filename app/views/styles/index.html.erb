@@ -1,68 +1,7 @@
 <!-- スタイル一覧画面 -->
 <div class="row">
   <div class="col-xs-2 index-status">
-
-      <% if user_signed_in? %>
-          <p class="text-center welcome-text">ようこそ <strong><%= current_user.nickname %></strong> さん</p>
-      <% end %>
-
-  	  <div class="col-xs-12 text-center index-top">
-  	  	 <%= link_to styles_path(status: "MENS") do %>
-  	       <img class="image-box-index">
-  	     <% end %>
-  	     <%= link_to styles_path(status: "LADIES") do %>
-  	       <img class="image-box-index2">
-  	     <% end %>
-      </div>
-
-      <div class="col-xs-12 text-center">
-        <div class="panel panel-color">
-          <div class="panel-im">
-            <h4><strong>Jenres</strong></h4>
-          </div>
-          <div class="panel-body">
-            <% @jenres.each do |jenre| %>
-              <strong><%= link_to jenre.name, styles_path(jenre_id: jenre.id), class: "jenre-text" %></strong><br>
-            <% end %>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-xs-12 text-center">
-      	<% @tags.each do |tag| %>
-      	  <%= link_to "#{tag.name}(#{tag.taggings_count})", tag_path(tag.name), class: "label label-default" %>
-      	<% end %>
-      </div>
-      <div class="col-xs-12 text-center search-style">
-        <h5 class="text-serch"><strong>スタイリスト<br>&<br>都道府県</strong></h5>
-        <%= form_tag(styles_path, :method => "get") do %>
-          <p>
-            <%= text_field_tag :search, params[:search], placeholder: "東京都" %>
-            <%= submit_tag "検索", :nickname => nil %>
-          </p>
-        <% end %>
-      </div>
-      <div class="col-xs-12 text-center">
-            <h5 class="text-serch"><strong>新着掲示板</strong></h5>
-            <% @boards_new.each_with_index do |board, i| %>
-              <div class="col-md-12 bord-new-box text-left">
-                <strong class="board_new_text"><%= i+1 %>. </strong><%= link_to board.title.truncate(20), board_path(board.id), class: "board_new_text" %><br>
-              </div>
-            <% end %>
-            <p><%= link_to "掲示板へ", boards_path, class: "board_new_text" %></p>
-      </div>
-      <div class="col-xs-12 text-center">
-        <h5 class="text-serch"><strong>新着スタイル</strong></h5>
-        <div class="styles-box center-block">
-          <% @styels_new.each do |style| %>
-            <div class="box-efect">
-              <%= link_to style_path(style.id) do %>
-                <%= attachment_image_tag style, :image, :fill, 50, 80, format: 'jpeg', class: "style-image" %>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-      </div>
+    <%= render 'layouts/sidebar', jenres: @jenres, tags: @tags, boards_new: @boards_new, styels_new: @styels_new %>
   </div>
 
   <!-- スタイル一覧 -->
