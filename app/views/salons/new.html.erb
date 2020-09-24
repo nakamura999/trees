@@ -1,30 +1,35 @@
 <div class="row">
-  <div class="col-xs-12 text-center">
+  <div class="col-xs-2 index-status">
+    <%= render 'layouts/sidebar', jenres: @jenres, tags: @tags, boards_new: @boards_new, styels_new: @styels_new %>
+  </div>
+  <div class="col-xs-10">
+    <div class="col-xs-12 text-center">
 	    <h2 class="main-tex"><strong>Salon 新規作成</strong></h2>
-  </div>
-</div>
-
-<%= form_for @salon do |f| %>
-<%= render 'layouts/error_messages', model: f.object %>
-<div class="row">
-  <div class="col-xs-6 text-center">
-    <%= attachment_image_tag @salon, :salon_image, :fill, 300, 250, fallback: "no_image.jpg", id: :img_prev, class: "profile-image pres" %><br>
-    <%= f.attachment_field :salon_image, class: "btn btn-danger image-tag", id: :user_img %>
-  </div>
-  <div class="col-xs-4">
-
-    <label class="col-sm-12 text-user">サロン名</label>
-    <div class="col-sm-12"><%= f.text_field :salon_name, class: "my-edit" %></div>
-
-    <label class="col-sm-12 text-user">サロン住所</label>
-    <div class="col-sm-12"><%= f.text_field :salon_address, class: "my-edit" %></div>
-
-    <label class="col-sm-12 text-user">サロン電話番号</label>
-    <div class="col-sm-12"><%= f.text_field :salon_phone, class: "my-edit" %></div>
-
-    <div class="col-sm-12">
-      <%= f.submit "サロン新規作成", class: "btn btn-danger image-tag" %>
     </div>
+
+    <%= form_for @salon do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      <div class="row">
+        <div class="col-xs-6 text-center">
+          <%= attachment_image_tag @salon, :salon_image, :fill, 300, 250, fallback: "no_image.jpg", id: :img_prev, class: "profile-image pres" %><br>
+          <%= f.attachment_field :salon_image, class: "btn btn-danger image-tag", id: :user_img %>
+        </div>
+        <div class="col-xs-4">
+
+          <label class="col-sm-12 text-user">サロン名</label>
+          <div class="col-sm-12"><%= f.text_field :salon_name, class: "my-edit" %></div>
+
+          <label class="col-sm-12 text-user">サロン住所</label>
+          <div class="col-sm-12"><%= f.text_field :salon_address, class: "my-edit" %></div>
+
+          <label class="col-sm-12 text-user">サロン電話番号</label>
+          <div class="col-sm-12"><%= f.text_field :salon_phone, class: "my-edit" %></div>
+
+          <div class="col-sm-12">
+            <%= f.submit "サロン新規作成", class: "btn btn-danger image-tag" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
-<% end %>

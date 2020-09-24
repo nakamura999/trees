@@ -41,6 +41,13 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+
+    # サイドバー
+    @jenres = Jenre.all
+    @tags = ActsAsTaggableOn::Tag.all
+    @boards_new = Board.limit(5).order("created_at desc")
+    @styels_new = Style.limit(12).order("created_at desc")
+
     if current_user != @user
       redirect_back(fallback_location: root_path)
     end

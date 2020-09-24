@@ -1,14 +1,26 @@
 class BoardsController < ApplicationController
   before_action :authenticate_user!
 
+  layout 'styletops'
+
   def show
     @board = Board.find(params[:id])
     @board_comment = BoardComment.new
+    # サイドバー
+    @jenres = Jenre.all
+    @tags = ActsAsTaggableOn::Tag.all
+    @boards_new = Board.limit(5).order("created_at desc")
+    @styels_new = Style.limit(12).order("created_at desc")
   end
 
   def index
     @boards = Board.all.order(created_at: :desc)
     @board = Board.new
+    # サイドバー
+    @jenres = Jenre.all
+    @tags = ActsAsTaggableOn::Tag.all
+    @boards_new = Board.limit(5).order("created_at desc")
+    @styels_new = Style.limit(12).order("created_at desc")
   end
 
   def create

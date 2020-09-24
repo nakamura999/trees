@@ -1,12 +1,24 @@
 class SalonsController < ApplicationController
   before_action :authenticate_user!
 
+  layout 'styletops'
+
   def new
     @salon = Salon.new
+    # サイドバー
+    @jenres = Jenre.all
+    @tags = ActsAsTaggableOn::Tag.all
+    @boards_new = Board.limit(5).order("created_at desc")
+    @styels_new = Style.limit(12).order("created_at desc")
   end
 
   def edit
     @salon = Salon.find(params[:id])
+    # サイドバー
+    @jenres = Jenre.all
+    @tags = ActsAsTaggableOn::Tag.all
+    @boards_new = Board.limit(5).order("created_at desc")
+    @styels_new = Style.limit(12).order("created_at desc")
     if @salon.user_id != current_user.id
       redirect_back(fallback_location: root_path)
     end

@@ -421,8 +421,16 @@ background-image: image-url("mains-image4.jpg");
   margin: 0 auto;
 }
 
+.text-side {
+  color: #e3e3e3;
+  background-color: #990033;
+  border-radius: 20px;
+  padding: 2px;
+  margin: 5px auto;
+}
+
 .btn-danger {
-  background: image-url("button.jpg");
+  background-color: #990033;
   background-size: cover;
 }
 .text-style {
