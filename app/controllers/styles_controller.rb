@@ -47,7 +47,7 @@ class StylesController < ApplicationController
       @rank = Style.joins(:favorites).group("favorites.style_id").where(id: @styles).order('count(style_id) desc').limit(5)
     else
       @styles = Style.order("RAND()").all
-      @rank = Style.find(Favorite.group(:style_id).order('count(style_id) desc').limit(3).pluck(:style_id))
+      @rank = Style.find(Favorite.group(:style_id).order('count(style_id) desc').limit(5).pluck(:style_id))
     end
   end
 
