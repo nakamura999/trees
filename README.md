@@ -60,7 +60,7 @@ Mysql
 - 会員登録時登録完了メール
 - エラーメッセージ日本語化
 - スタイル一覧はランダム表示(下記一覧画面)
-![main-styles](app/assets/images/trees-main-styles.jpg)
+![main-styles](app/assets/images/trees-main-styles2.jpg)
 
 ### 管理者側
 - アクティビティをチェックできるダッシュボード(グラフにchartkick・groupdate使用)
