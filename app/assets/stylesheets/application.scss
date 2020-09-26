@@ -493,7 +493,6 @@ background-image: image-url("mains-image4.jpg");
 }
 .my-styles {
   width: 100%;
-  overflow: auto;
   height: 1200px;
   padding: 0 60px;
 }
@@ -829,4 +828,21 @@ background-image: image-url("mains-image4.jpg");
   margin-bottom: 10px;
   border: 1px dashed white;
   box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #990033;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 15px;    /*角を丸くする*/
 }

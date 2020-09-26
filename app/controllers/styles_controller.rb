@@ -8,47 +8,49 @@ class StylesController < ApplicationController
     @tags = ActsAsTaggableOn::Tag.all
     @boards_new = Board.limit(5).order("created_at desc")
     @styels_new = Style.limit(12).order("created_at desc")
+    if params[:tag]
+      @style_tag = Style.tagged_with(params[:tag])
+      @styles = @style_tag.order("created_at desc").all.page(params[:page]).per(30)
+      @rank = Style.joins(:favorites).group("favorites.style_id").where(id: @style_tag).order('count(style_id) desc').limit(5)
+    elsif params[:status] == "MENS"
+      @styles = Style.where(status: "MENS").order("created_at desc").all.page(params[:page]).per(30)
+      @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "MENS").order('count(style_id) desc').limit(5)
+    elsif params[:status] == "LADIES"
+      @styles = Style.where(status: "LADIES").order("created_at desc").all.page(params[:page]).per(30)
+      @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "LADIES").order('count(style_id) desc').limit(5)
+    elsif params[:jenre_id]
+      @jenre = Jenre.find(params[:jenre_id])
+      @styles = @jenre.styles.order("created_at desc").all.page(params[:page]).per(30)
+      @rank = Style.joins(:favorites).group("favorites.style_id").where(jenre_id: @jenre.id).order('count(style_id) desc').limit(5)
+    elsif params[:search]
+      @styles_search = Style.search(params[:search])
+      @styles = @styles_search.order("created_at desc").all.page(params[:page]).per(30)
+      @rank = Style.joins(:favorites).group("favorites.style_id").where(id: @styles_search).order('count(style_id) desc').limit(5)
+    else
+      @styles = Style.order("created_at desc").all.page(params[:page]).per(30)
+      @rank = Style.find(Favorite.group(:style_id).order('count(style_id) desc').limit(5).pluck(:style_id))
+    end
+    # 以前のデータ
     # if params[:tag]
     #   @styles = Style.tagged_with(params[:tag])
     #   @rank = Style.joins(:favorites).group("favorites.style_id").where(id: @styles).order('count(style_id) desc').limit(5)
     # elsif params[:status] == "MENS"
-    #   @styles = Style.where(status: "MENS").order("RANDOM()").all
+    #   @styles = Style.where(status: "MENS").order("RAND()").all
     #   @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "MENS").order('count(style_id) desc').limit(5)
     # elsif params[:status] == "LADIES"
-    #   @styles = Style.where(status: "LADIES").order("RANDOM()").all
+    #   @styles = Style.where(status: "LADIES").order("RAND()").all
     #   @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "LADIES").order('count(style_id) desc').limit(5)
     # elsif params[:jenre_id]
     #   @jenre = Jenre.find(params[:jenre_id])
-    #   @styles = @jenre.styles.order("RANDOM()").all
+    #   @styles = @jenre.styles.order("RAND()").all
     #   @rank = Style.joins(:favorites).group("favorites.style_id").where(jenre_id: @jenre.id).order('count(style_id) desc').limit(5)
     # elsif params[:search]
     #   @styles = Style.search(params[:search])
     #   @rank = Style.joins(:favorites).group("favorites.style_id").where(id: @styles).order('count(style_id) desc').limit(5)
     # else
-    #   @styles = Style.order("RANDOM()").all
+    #   @styles = Style.order("RAND()").all
     #   @rank = Style.find(Favorite.group(:style_id).order('count(style_id) desc').limit(5).pluck(:style_id))
     # end
-    # Mysql用(本番環境)
-    if params[:tag]
-      @styles = Style.tagged_with(params[:tag])
-      @rank = Style.joins(:favorites).group("favorites.style_id").where(id: @styles).order('count(style_id) desc').limit(5)
-    elsif params[:status] == "MENS"
-      @styles = Style.where(status: "MENS").order("RAND()").all
-      @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "MENS").order('count(style_id) desc').limit(5)
-    elsif params[:status] == "LADIES"
-      @styles = Style.where(status: "LADIES").order("RAND()").all
-      @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "LADIES").order('count(style_id) desc').limit(5)
-    elsif params[:jenre_id]
-      @jenre = Jenre.find(params[:jenre_id])
-      @styles = @jenre.styles.order("RAND()").all
-      @rank = Style.joins(:favorites).group("favorites.style_id").where(jenre_id: @jenre.id).order('count(style_id) desc').limit(5)
-    elsif params[:search]
-      @styles = Style.search(params[:search])
-      @rank = Style.joins(:favorites).group("favorites.style_id").where(id: @styles).order('count(style_id) desc').limit(5)
-    else
-      @styles = Style.order("RAND()").all
-      @rank = Style.find(Favorite.group(:style_id).order('count(style_id) desc').limit(5).pluck(:style_id))
-    end
   end
 
   def show
