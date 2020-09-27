@@ -14,7 +14,7 @@ class BoardsController < ApplicationController
   end
 
   def index
-    @boards = Board.all.order(created_at: :desc)
+    @boards = Board.all.order(created_at: :desc).page(params[:page]).per(10)
     @board = Board.new
     # サイドバー
     @jenres = Jenre.all
