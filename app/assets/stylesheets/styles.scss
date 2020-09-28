@@ -108,3 +108,27 @@ max-width: 100%;
   box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
   color: white;
 }
+
+.favorite-style {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #969696;
+  background: #990033;
+  background-size: cover;
+  color: #e3e3e3;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.favorite-box {
+	width: 50%;
+}
+
+.favorite-list-text {
+	padding-bottom: 10px;
+	color: #333333;
+}
+
+.bottom-field {
+	margin-bottom: 10px;
+}

@@ -8,6 +8,12 @@ class StylesController < ApplicationController
     @tags = ActsAsTaggableOn::Tag.all
     @boards_new = Board.limit(5).order("created_at desc")
     @styels_new = Style.limit(12).order("created_at desc")
+
+    if user_signed_in?
+      @user = current_user.favorites_styles
+      @user_favorites = @user.limit(5).order("created_at desc")
+    end
+
     if params[:tag]
       @style_tag = Style.tagged_with(params[:tag])
       @styles = @style_tag.order("created_at desc").all.page(params[:page]).per(30)

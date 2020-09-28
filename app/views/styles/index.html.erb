@@ -49,6 +49,35 @@
       <%= paginate @styles %><br>
       <%= page_entries_info @styles %>
     </div>
+
+    <div class="col-xs-12 text-center">
+      <div class="center-block favorite-box">
+      <h5 class="favorite-style"><strong>最近お気に入り登録したヘアスタイル</strong></h5>
+      </div>
+    </div>
+    <div class="col-xs-12 text-center">
+      <% if user_signed_in? %>
+        <% if @user.size == 0 %>
+          まだお気に入り登録されていません
+        <% else %>
+          <div class="ranking-box center-block">
+            <% @user_favorites.each do |favorite| %>
+              <div class="box-efect boxes text-center">
+                <%= link_to style_path(favorite.id) do %>
+                  <%= attachment_image_tag favorite, :image, :fill, 150, 200, format: 'jpeg' %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-xs-12 text-right bottom-field">
+            <%= link_to '>> お気に入り一覧へ', user_path(current_user), class: "favorite-list-text" %>
+          </div>
+        <% end %>
+      <% else %>
+        登録されていません
+      <% end %>
+    </div>
+
   </div>
 
 </div>

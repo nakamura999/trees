@@ -350,7 +350,7 @@ background-image: image-url("mains-image4.jpg");
   background: image-url("button.jpg");
   background-size: cover;
   color: #e3e3e3;
-
+  border-radius: 10px;
 }
 .profile-image {
   box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
@@ -499,7 +499,7 @@ background-image: image-url("mains-image4.jpg");
 .my-styles2 {
   width: 100%;
   overflow: auto;
-  height: 1750px;
+  height: 1560px;
 }
 .scloll-top {
   overflow: scroll;
