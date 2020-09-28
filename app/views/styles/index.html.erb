@@ -70,7 +70,7 @@
             <% end %>
           </div>
           <div class="col-xs-12 text-right bottom-field">
-            <%= link_to '>> お気に入り一覧へ', user_path(current_user), class: "favorite-list-text" %>
+            <%= link_to '>> お気に入り一覧へ', user_path(current_user, anchor: "favorite-top"), class: "favorite-list-text" %>
           </div>
         <% end %>
       <% else %>
