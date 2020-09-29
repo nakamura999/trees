@@ -30,16 +30,17 @@
       </div>
     </div>
     <div class="col-xs-12 text-center">
-      <h2 class="main-tex2"><strong>S t y l e s</strong>
-        <% if params[:tag] %>
-          <%= link_to @created_at, tag_path(created_at: @created_at_num, tag: @style_tag) %>
-        <% elsif params[:jenre_id] %>
-          <%= link_to @created_at, styles_path(created_at: @created_at_num, jenre_id: @jenre) %>
-        <% elsif params[:search] %>
-        <% else %>
-          <%= link_to @created_at, styles_path(created_at: @created_at_num) %>
-        <% end %>
-      </h2>
+      <h2 class="main-tex2"><strong>S t y l e s</strong></h2>
+        <div class="sort-tag text-right">
+          <% if params[:tag] %>
+            <%= link_to @created_at, tag_path(created_at: @created_at_num, tag_list: @style_tag.name), class: "sort-text" %>
+          <% elsif params[:jenre_id] %>
+            <%= link_to @created_at, styles_path(created_at: @created_at_num, jenre_id: @jenre), class: "sort-text" %>
+          <% elsif params[:search] %>
+          <% else %>
+            <%= link_to @created_at, styles_path(created_at: @created_at_num), class: "sort-text" %>
+          <% end %>
+        </div>
     </div>
     <div class="my-styles2">
       <div class="col-xs-12 text-center">
