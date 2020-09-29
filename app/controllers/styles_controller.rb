@@ -24,14 +24,14 @@ class StylesController < ApplicationController
       @style_tag = Style.tagged_with(params[:tag])
       if @created_at_num == 2
         # タグ古い順
-        @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "MENS").order('count(style_id) desc').limit(5)
+        @rank = Style.joins(:favorites).group("favorites.style_id").where(id: @style_tag).order('count(style_id) desc').limit(5)
         @style_tag = Style.tagged_with(params[:tag])
         @styles = @style_tag.order("created_at asc").all.page(params[:page]).per(30)
         @created_at = '投稿順▼'
         @created_at_num = 3
       else
         # タグ新着順
-        @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "MENS").order('count(style_id) desc').limit(5)
+        @rank = Style.joins(:favorites).group("favorites.style_id").where(id: @style_tag).order('count(style_id) desc').limit(5)
         @style_tag = Style.tagged_with(params[:tag])
         @styles = @style_tag.order("created_at desc").all.page(params[:page]).per(30)
         @created_at = '新着順▲'
