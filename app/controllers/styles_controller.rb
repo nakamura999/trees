@@ -9,29 +9,122 @@ class StylesController < ApplicationController
     @boards_new = Board.limit(5).order("created_at desc")
     @styels_new = Style.limit(12).order("created_at desc")
 
+    # ソート
+    @created_at = '登録日時△'
+    @created_at_num = 0
+
     if user_signed_in?
       @user = current_user.favorites_styles
       @user_favorites = @user.limit(5).order("created_at desc")
     end
 
     if params[:tag]
+    # タグ検索
+      @created_at_num = 2
       @style_tag = Style.tagged_with(params[:tag])
       @styles = @style_tag.order("created_at desc").all.page(params[:page]).per(30)
       @rank = Style.joins(:favorites).group("favorites.style_id").where(id: @style_tag).order('count(style_id) desc').limit(5)
     elsif params[:status] == "MENS"
+    # メンズ検索
+      @created_at_num = 4
       @styles = Style.where(status: "MENS").order("created_at desc").all.page(params[:page]).per(30)
       @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "MENS").order('count(style_id) desc').limit(5)
     elsif params[:status] == "LADIES"
+    # レディース検索
+      @created_at_num = 6
       @styles = Style.where(status: "LADIES").order("created_at desc").all.page(params[:page]).per(30)
       @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "LADIES").order('count(style_id) desc').limit(5)
+    elsif params[:created_at] && params[:jenre_id]
+    # ソート機能(ジャンル)
+      @created_at_num = params[:created_at].to_i
+      @jenre = Jenre.find(params[:jenre_id])
+      if @created_at_num == 8
+        # ジャンル古い順
+        @styles = @jenre.styles.order("created_at asc").all.page(params[:page]).per(30)
+        @rank = Style.joins(:favorites).group("favorites.style_id").where(jenre_id: @jenre.id).order('count(style_id) desc').limit(5)
+        @created_at = '登録日時▼'
+        @created_at_num = 9
+      else
+        # レディース新着順
+        @styles = @jenre.styles.order("created_at desc").all.page(params[:page]).per(30)
+        @rank = Style.joins(:favorites).group("favorites.style_id").where(jenre_id: @jenre.id).order('count(style_id) desc').limit(5)
+        @created_at = '登録日時▲'
+        @created_at_num = 8
+      end
     elsif params[:jenre_id]
+    # ジャンル検索
+      @created_at_num = 8
       @jenre = Jenre.find(params[:jenre_id])
       @styles = @jenre.styles.order("created_at desc").all.page(params[:page]).per(30)
       @rank = Style.joins(:favorites).group("favorites.style_id").where(jenre_id: @jenre.id).order('count(style_id) desc').limit(5)
     elsif params[:search]
+    # スタイリスト名 &　都道府県検索
       @styles_search = Style.search(params[:search])
       @styles = @styles_search.order("created_at desc").all.page(params[:page]).per(30)
       @rank = Style.joins(:favorites).group("favorites.style_id").where(id: @styles_search).order('count(style_id) desc').limit(5)
+    elsif params[:created_at]
+    # ソート機能
+      @created_at_num = params[:created_at].to_i
+
+      if @created_at_num == 0
+        @rank = Style.find(Favorite.group(:style_id).order('count(style_id) desc').limit(5).pluck(:style_id))
+        @styles = Style.order("created_at asc").all.page(params[:page]).per(30)
+        @created_at = '登録日時▲'
+        @created_at_num = 1
+      elsif @created_at_num == 4
+        # メンズ古い順
+        @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "MENS").order('count(style_id) desc').limit(5)
+        @styles = Style.where(status: "MENS").order("created_at asc").all.page(params[:page]).per(30)
+        @created_at = '登録日時▼'
+        @created_at_num = 5
+      elsif @created_at_num == 5
+        # メンズ新着順
+        @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "MENS").order('count(style_id) desc').limit(5)
+        @styles = Style.where(status: "MENS").order("created_at desc").all.page(params[:page]).per(30)
+        @created_at = '登録日時▲'
+        @created_at_num = 4
+      elsif @created_at_num == 6
+        # レディース古い順
+        @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "LADIES").order('count(style_id) desc').limit(5)
+        @styles = Style.where(status: "LADIES").order("created_at asc").all.page(params[:page]).per(30)
+        @created_at = '登録日時▼'
+        @created_at_num = 7
+      elsif @created_at_num == 7
+        # レディース新着順
+        @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "LADIES").order('count(style_id) desc').limit(5)
+        @styles = Style.where(status: "LADIES").order("created_at desc").all.page(params[:page]).per(30)
+        @created_at = '登録日時▲'
+        @created_at_num = 6
+      else
+        @rank = Style.find(Favorite.group(:style_id).order('count(style_id) desc').limit(5).pluck(:style_id))
+        @styles = Style.order("created_at desc").all.page(params[:page]).per(30)
+        @created_at = '登録日時▼'
+        @created_at_num = 0
+      end
+    # elsif params[:created_at] && params[:tag]
+    #   @created_at_num = params[:created_at].to_i
+    #   if @created_at_num == 2
+    #     # メンズ新規順
+    #     @style_tag = Style.tagged_with(params[:tag])
+    #     @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "MENS").order('count(style_id) desc').limit(5)
+    #     @style_tag = Style.tagged_with(params[:tag])
+    #     @styles = @style_tag.order("created_at desc").all.page(params[:page]).per(30)
+    #     @created_at = '登録日時▼'
+    #     @created_at_num = 3
+    #   elsif @created_at_num == 3
+    #     @style_tag = Style.tagged_with(params[:tag])
+    #     # メンズ新規順
+    #     @rank = Style.joins(:favorites).group("favorites.style_id").where(status: "MENS").order('count(style_id) desc').limit(5)
+    #     @style_tag = Style.tagged_with(params[:tag])
+    #     @styles = @style_tag.order("created_at asc").all.page(params[:page]).per(30)
+    #     @created_at = '登録日時▲'
+    #     @created_at_num = 2
+    #   else
+    #     @rank = Style.find(Favorite.group(:style_id).order('count(style_id) desc').limit(5).pluck(:style_id))
+    #     @styles = Style.order("created_at desc").all.page(params[:page]).per(30)
+    #     @created_at = '登録日時▼'
+    #     @created_at_num = 0
+    #   end
     else
       @styles = Style.order("created_at desc").all.page(params[:page]).per(30)
       @rank = Style.find(Favorite.group(:style_id).order('count(style_id) desc').limit(5).pluck(:style_id))
