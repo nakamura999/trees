@@ -24,13 +24,13 @@
                   <%= link_to board_path(f.id) do %>
                     <p class="board-title"><%= f.title %></p>
                   <% end %>
-                  <%= f.content %>
+                  <p class="board-content"><%= f.content %></p>
                 </td>
               </tr>
             <% end %>
           </tbody>
         </table>
-        <div class="col-xs-12 text-right">
+        <div class="col-xs-12 text-right bord-nate">
           <%= paginate @boards %><br>
           <%= page_entries_info @boards %>
         </div>

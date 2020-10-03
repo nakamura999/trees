@@ -585,6 +585,10 @@ background-image: image-url("mains-image4.jpg");
 .board-title {
   font-size: 20px;
   border-bottom: 2px solid #969696;
+  color: black;
+}
+.board-content {
+  color: black;
 }
 .bord-con {
   border-bottom: 2px solid #969696;
@@ -606,15 +610,18 @@ background-image: image-url("mains-image4.jpg");
   margin-bottom: 20px;
   border-bottom: 2px dashed #969696;
 }
+.bord-nate {
+  color: black;
+}
 .my-styles-board {
   width: 100%;
   overflow: auto;
-  height: 1000px;
+  height: 2000px;
   margin-bottom: 50px;
   color: #e3e3e3;
   box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
   border: 1px dashed white;
-  background-color: #252525;
+  background-color: white;
   padding: 20px;
 }
 .comment-count {
