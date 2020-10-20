@@ -585,10 +585,10 @@ background-image: image-url("mains-image4.jpg");
 .board-title {
   font-size: 20px;
   border-bottom: 2px solid #969696;
-  color: black;
+  color: #e3e3e3;
 }
 .board-content {
-  color: black;
+  color: #e3e3e3;
 }
 .bord-con {
   border-bottom: 2px solid #969696;
@@ -610,19 +610,17 @@ background-image: image-url("mains-image4.jpg");
   margin-bottom: 20px;
   border-bottom: 2px dashed #969696;
 }
-.bord-nate {
-  color: black;
-}
 .my-styles-board {
   width: 100%;
   overflow: auto;
   height: 2000px;
   margin-bottom: 50px;
-  color: #e3e3e3;
+  color: white;
   box-shadow: 1px 8px 12px rgba(0,0,0,0.6);
   border: 1px dashed white;
-  background-color: white;
+  background-color: #252525;
   padding: 20px;
+  border-radius: 10px;
 }
 .comment-count {
   margin-top: 10px;
